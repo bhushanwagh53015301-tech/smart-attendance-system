@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Smart Attendance System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="container login-container">
+      <div class="login-layout">
+        <aside class="login-side">
+          <div class="login-illustration">
+            <div class="campus-card">
+              <img class="campus-logo" src="assets/college-logo.webp" alt="Rayat Shikshan Sanstha logo" />
+              <h3>S.M.Joshi College</h3>
+              <p class="muted">Hadapsar, Pune</p>
+              <div class="campus-tags">
+                <span class="pill"><i class="fa-solid fa-wifi"></i> Smart Campus</span>
+                <span class="pill"><i class="fa-solid fa-shield"></i> Secure Access</span>
+              </div>
+            </div>
+            <div class="orbit"></div>
+            <div class="orbit small"></div>
+          </div>
+          <div class="login-stats">
+            <div class="stat-card">
+              <strong>5,200+</strong>
+              <span class="muted">Active Students</span>
+            </div>
+            <div class="stat-card">
+              <strong>24x7</strong>
+              <span class="muted">Live Support</span>
+            </div>
+            <div class="stat-card">
+              <strong>98%</strong>
+              <span class="muted">Check-in Success</span>
+            </div>
+          </div>
+        </aside>
+
+        <div class="hero-card animate login-card">
+          <h2>Welcome Back</h2>
+          <p class="muted">Log in with your official college credentials.</p>
+          <div class="login-chip">
+            <i class="fa-solid fa-shield-halved"></i> Secure Student Access
+          </div>
+          <form class="form" id="login-form">
+            <div class="login-switch">
+              <button type="button" class="switch-btn active" data-mode="email">Email Login</button>
+              <button type="button" class="switch-btn" data-mode="id">Student ID</button>
+            </div>
+            <div id="email-login">
+              <input type="email" id="email" placeholder="Email" />
+              <input type="password" id="password" placeholder="Password" />
+            </div>
+            <div id="id-login" style="display: none">
+              <input type="text" id="student-id" placeholder="Student ID / PRN" />
+              <input type="password" id="student-passcode" placeholder="Passcode / DOB" />
+              <p class="helper">Use your official ID with the passcode issued by the college.</p>
+            </div>
+            <select id="role">
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+              <option value="admin">Admin</option>
+            </select>
+            <button class="btn" type="submit">Login</button>
+          </form>
+          <div class="login-note">
+            <div>
+              <strong>Need help?</strong>
+              <p class="helper">Contact the portal desk for password reset and ID activation.</p>
+            </div>
+            <span class="badge success">24x7 Support</span>
+          </div>
+          <div style="margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap">
+            <a class="btn btn-outline" href="index.html">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="toast"></div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard | Smart Attendance System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  </head>
+  <body>
+    <div class="container dashboard" id="teacher-board">
+      <div class="dashboard-header">
+        <div>
+          <h2>Teacher Dashboard</h2>
+          <p class="muted">Mark attendance, generate QR check-ins, and review class performance.</p>
+        </div>
+        <div class="panel" style="min-width: 220px">
+          <div class="helper">Logged in as</div>
+          <strong id="teacher-greeting">Teacher</strong>
+          <div class="helper" id="teacher-meta">Subject: --</div>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap">
+          <button class="btn btn-outline" id="logout-btn" type="button">Logout</button>
+          <a class="btn btn-outline" href="index.html">Home</a>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3><i class="fa-solid fa-users"></i> Total Students</h3>
+          <strong id="teacher-total-students">0</strong>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-chart-column"></i> Attendance Rate</h3>
+          <strong id="teacher-attendance-rate">0%</strong>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-clock"></i> Upcoming Class</h3>
+          <strong>09:30 AM</strong>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2>Mark Attendance</h2>
+        <form class="form" id="attendance-form">
+          <div class="grid">
+            <div>
+              <label>Subject</label>
+              <select id="teacher-subject"></select>
+            </div>
+            <div>
+              <label>Class</label>
+              <select id="teacher-class"></select>
+            </div>
+            <div>
+              <label>Year</label>
+              <select id="teacher-year">
+                <option value="Year 1">1st Year</option>
+                <option value="Year 2" selected>2nd Year</option>
+                <option value="Year 3">3rd Year</option>
+              </select>
+            </div>
+            <div>
+              <label>Date</label>
+              <input type="date" id="attendance-date" required />
+            </div>
+          </div>
+          <div class="grid" id="student-checkboxes"></div>
+          <button class="btn" type="submit">Save Attendance</button>
+        </form>
+      </section>
+
+      <section class="section">
+        <h2>Student Details (Selected Class/Year)</h2>
+        <div class="glass-card">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>PRN / ID</th>
+                <th>Email</th>
+                <th>Class</th>
+                <th>Year</th>
+              </tr>
+            </thead>
+            <tbody id="teacher-student-details"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>QR Attendance</h2>
+        <div class="glass-card">
+          <p class="muted">Generate a QR code for quick student check-in.</p>
+          <button class="btn" id="generate-qr">Generate QR</button>
+          <div id="qr-container" style="margin-top: 16px"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Reports & Export</h2>
+        <div class="glass-card">
+          <p class="muted">Download attendance records as an Excel-compatible CSV.</p>
+          <button class="btn btn-outline" id="export-attendance">Export Attendance</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Leave Requests</h2>
+        <div class="glass-card">
+          <p class="muted">Student leave applications submitted from the student portal.</p>
+          <div class="list" id="teacher-leave-requests"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Recent Attendance</h2>
+        <div class="glass-card">
+          <input class="table-search" id="attendance-search" placeholder="Search attendance..." />
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="teacher-attendance"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+    <div class="toast"></div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

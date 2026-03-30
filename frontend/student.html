@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard | Smart Attendance System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container dashboard" id="student-board">
+      <div class="dashboard-header">
+        <div>
+          <h2>Student Dashboard</h2>
+          <p class="muted">Track your attendance, weekly performance, and upcoming announcements.</p>
+        </div>
+        <div class="panel" style="min-width: 220px">
+          <div class="helper">Logged in as</div>
+          <strong id="student-greeting">Student</strong>
+          <div class="helper" id="student-meta">ID: -- | Class: --</div>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap">
+          <button class="btn btn-outline" id="logout-btn" type="button">Logout</button>
+          <a class="btn btn-outline" href="index.html">Home</a>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3><i class="fa-solid fa-chart-line"></i> Attendance Rate</h3>
+          <strong id="attendance-rate">0%</strong>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-shield"></i> Status</h3>
+          <strong id="low-attendance">Pending</strong>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-calendar-check"></i> Next Advisory</h3>
+          <strong>April 10</strong>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-fire"></i> Attendance Streak</h3>
+          <strong id="attendance-streak">0 days</strong>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-bullseye"></i> Goal Tracker</h3>
+          <strong id="attendance-goal">75% Target</strong>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="glass-card">
+          <h3>Weekly Presence</h3>
+          <canvas id="attendanceChart" height="160"></canvas>
+        </div>
+        <div class="glass-card">
+          <h3>Subject-wise Attendance</h3>
+          <canvas id="subjectChart" height="160"></canvas>
+        </div>
+        <div class="glass-card">
+          <h3>Notifications</h3>
+          <p class="muted">Low attendance alerts will appear here.</p>
+          <div class="badge warning">Maintain 75% in Data Structures</div>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="dashboard-header">
+          <div>
+            <h2>Quick Attendance Check-in</h2>
+            <p class="muted">Mark attendance using session code or QR token issued by your teacher.</p>
+          </div>
+          <span class="pill"><i class="fa-solid fa-qrcode"></i> QR Ready</span>
+        </div>
+        <div class="split">
+          <div class="panel">
+            <form class="form" id="self-attendance-form">
+              <div class="form-row">
+                <input type="text" id="self-student-id" placeholder="Student ID / PRN" />
+                <select id="self-subject"></select>
+              </div>
+              <div class="form-row">
+                <input type="text" id="self-session" placeholder="Session Code / QR Token" />
+                <input type="text" id="self-location" placeholder="Location (Auto / Manual)" />
+              </div>
+              <div class="form-row">
+                <input type="text" id="self-device" placeholder="Device ID (Optional)" />
+                <button class="btn" type="submit">Mark Attendance</button>
+              </div>
+              <p class="helper">Location is used for campus geofencing and audit logs.</p>
+            </form>
+            <div class="soft-card" id="self-attendance-status">Waiting for check-in...</div>
+          </div>
+          <div class="panel">
+            <h3>Recent Check-ins</h3>
+            <div class="list" id="recent-checkins"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="dashboard-header">
+          <div>
+            <h2>Today’s Schedule</h2>
+            <p class="muted">Your next classes, labs, and important reminders.</p>
+          </div>
+          <span class="pill"><i class="fa-solid fa-clock"></i> Live Timetable</span>
+        </div>
+        <div class="grid" id="today-schedule"></div>
+      </section>
+
+      <section class="section">
+        <h2>Leave & Outpass Requests</h2>
+        <div class="split">
+          <div class="panel">
+            <form class="form" id="leave-form">
+              <div class="form-row">
+                <input type="text" id="leave-reason" placeholder="Reason" />
+                <input type="date" id="leave-from" />
+              </div>
+              <div class="form-row">
+                <input type="date" id="leave-to" />
+                <select id="leave-type">
+                  <option value="medical">Medical</option>
+                  <option value="personal">Personal</option>
+                  <option value="event">Event / Competition</option>
+                </select>
+              </div>
+              <textarea id="leave-notes" rows="3" placeholder="Additional notes"></textarea>
+              <button class="btn" type="submit">Submit Request</button>
+            </form>
+          </div>
+          <div class="panel">
+            <h3>Request Status</h3>
+            <div class="list" id="leave-status"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Subject-wise Attendance</h2>
+        <div class="grid" id="subject-list"></div>
+      </section>
+
+      <section class="section">
+        <h2>Student Profile</h2>
+        <div class="glass-card" id="student-profile">
+          <p class="muted">Loading profile...</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Resources</h2>
+        <div class="glass-card" style="margin-bottom: 16px">
+          <p class="muted">Choose a subject to access curated lecture notes and lab tasks.</p>
+          <select id="resource-subjects"></select>
+        </div>
+        <div class="grid">
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-folder-open"></i> Lecture Notes</h3>
+            <p class="muted">Week-wise notes and slides for quick revision.</p>
+          </div>
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-laptop-code"></i> Lab Sheets</h3>
+            <p class="muted">Updated assignments and practice tasks.</p>
+          </div>
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-book"></i> Reference Library</h3>
+            <p class="muted">Recommended books and research links.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>College Announcements</h2>
+        <div class="grid">
+          <div class="glass-card">
+            <h3>Guest Lecture</h3>
+            <p class="muted">AI for Education talk this Friday at the main auditorium.</p>
+          </div>
+          <div class="glass-card">
+            <h3>Library Drive</h3>
+            <p class="muted">Submit all overdue books before semester-end.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="toast"></div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Smart Attendance System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="brand">
+          <div class="brand-logo"><img src="assets/college-logo.webp" alt="Rayat Shikshan Sanstha logo" /></div>
+          <div>
+            <div>Smart Attendance System</div>
+            <small class="muted">S.M.Joshi college Hadapsar</small>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="student.html">Student</a>
+          <a href="teacher.html">Teacher</a>
+          <a href="admin.html">Admin</a>
+          <a class="btn" href="login.html">Login</a>
+        </div>
+      </nav>
+
+      <section class="section contact-hero">
+        <div>
+          <div class="breadcrumb">Home / Contact</div>
+          <h2>Contact Us</h2>
+          <p class="muted">
+            Send us a message, visit the campus, or call our help desk. We are here to help with admissions, attendance
+            issues, and portal support.
+          </p>
+        </div>
+        <div class="pill"><i class="fa-solid fa-headset"></i> Support Desk</div>
+      </section>
+
+      <section class="contact-grid">
+        <div class="contact-map glass-card">
+          <iframe
+            title="S.M. Joshi College Map"
+            src="https://www.google.com/maps?q=S.M.%20Joshi%20College%20Hadapsar%20Pune&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div class="contact-form panel">
+          <h3>Drop us a message</h3>
+          <form class="form" id="contact-form">
+            <input type="text" placeholder="Full Name *" required />
+            <input type="email" placeholder="Your Email *" required />
+            <input type="text" placeholder="Subject *" required />
+            <textarea rows="4" placeholder="Message"></textarea>
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+          <p class="helper" style="margin-top: 10px">We reply within 24 hours on working days.</p>
+        </div>
+      </section>
+
+      <section class="section contact-cards">
+        <div class="glass-card contact-card">
+          <div class="contact-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+          <div>
+            <strong>Reach Us</strong>
+            <p class="muted">S.M. Joshi College, Malwadi, Hadapsar, Pune 411028</p>
+          </div>
+        </div>
+        <div class="glass-card contact-card">
+          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <strong>Contact Us</strong>
+            <p class="muted">Tel: 020-26999001 / 240121</p>
+          </div>
+        </div>
+        <div class="glass-card contact-card">
+          <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <strong>Write To Us</strong>
+            <p class="muted">smjoshicollege@gmail.com</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>Smart Attendance System (c) 2026. Designed for S.M.Joshi college Hadapsar.</p>
+      </footer>
+    </div>
+    <div class="toast"></div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

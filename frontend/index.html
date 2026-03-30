@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Attendance System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="brand">
+          <div class="brand-logo"><img src="assets/college-logo.webp" alt="Rayat Shikshan Sanstha logo" /></div>
+          <div>
+            <div>Smart Attendance System</div>
+            <small class="muted">Attendance Management Platform</small>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#roles">Roles</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#contact">Contact</a>
+          <a class="btn" href="login.html">Login</a>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <h1>Professional attendance management for students, teachers, and admins.</h1>
+          <p>
+            Secure login, real-time attendance tracking, QR support, exports, and dashboard analytics in one unified
+            system.
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap">
+            <a class="btn" href="login.html">Access Platform</a>
+            <a class="btn btn-outline" href="#roles">View Role Access</a>
+          </div>
+        </div>
+        <div class="hero-card animate">
+          <h3>Platform Overview</h3>
+          <p class="muted">Designed for academic operations with clear role-based control.</p>
+          <div class="grid" style="margin-top: 16px">
+            <div class="glass-card">
+              <h4>Student</h4>
+              <strong>Self check-in</strong>
+            </div>
+            <div class="glass-card">
+              <h4>Teacher</h4>
+              <strong>QR + reports</strong>
+            </div>
+            <div class="glass-card">
+              <h4>Admin</h4>
+              <strong>User control</strong>
+            </div>
+            <div class="glass-card">
+              <h4>Security</h4>
+              <strong>JWT auth</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-alt" id="roles">
+        <div class="container">
+          <h2>Role Access</h2>
+          <p class="muted">Each role gets the tools they need with controlled permissions.</p>
+          <div class="feature-grid" style="margin-top: 24px">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fa-solid fa-user-graduate"></i></div>
+              <h3>Student</h3>
+              <p>View attendance, submit self attendance, track profile, and send leave requests.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+              <h3>Teacher</h3>
+              <p>Mark attendance, generate QR payload, monitor records, and export attendance reports.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <h3>Admin</h3>
+              <p>Manage users and subjects, monitor platform stats, and send low-attendance alerts.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="capabilities">
+        <h2>Core Capabilities</h2>
+        <div class="grid">
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-user-lock"></i> Secure Authentication</h3>
+            <p class="muted">Role-based login with JWT token handling and protected API routes.</p>
+          </div>
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-qrcode"></i> Smart Check-ins</h3>
+            <p class="muted">Attendance can be marked by teachers or submitted by students using session codes.</p>
+          </div>
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-chart-line"></i> Live Insights</h3>
+            <p class="muted">Dashboard statistics and trends for attendance health and action tracking.</p>
+          </div>
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-file-csv"></i> Export & Reports</h3>
+            <p class="muted">Teacher/admin can export attendance records into CSV for documentation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-alt" id="workflow">
+        <div class="container">
+          <h2>How It Works</h2>
+          <div class="grid">
+            <div class="glass-card">
+              <h3>1. Login</h3>
+              <p class="muted">Users authenticate using role credentials or student ID mode.</p>
+            </div>
+            <div class="glass-card">
+              <h3>2. Perform Role Tasks</h3>
+              <p class="muted">Student, teacher, and admin dashboards provide dedicated workflows.</p>
+            </div>
+            <div class="glass-card">
+              <h3>3. Track & Act</h3>
+              <p class="muted">Use dashboards, alerts, and exports to maintain attendance compliance.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <h2>Contact</h2>
+        <div class="glass-card">
+          <p class="muted">Email: support@smartattendance.edu | Phone: +91 80000 12345</p>
+          <p class="muted">Campus Ops Desk: S.M. Joshi College, Hadapsar, Pune 411028</p>
+          <div style="margin-top: 12px">
+            <a class="btn btn-outline" href="contact.html">Open Contact Page</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>Smart Attendance System (c) 2026. Professional Attendance Operations Platform.</p>
+      </footer>
+    </div>
+    <div class="toast"></div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

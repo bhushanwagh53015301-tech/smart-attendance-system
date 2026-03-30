@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | Smart Attendance System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="container dashboard" id="admin-board">
+      <div class="dashboard-header">
+        <div>
+          <h2>Admin Dashboard</h2>
+          <p class="muted">Manage users, subjects, and platform analytics from one professional workspace.</p>
+        </div>
+        <div class="panel" style="min-width: 220px">
+          <div class="helper">Logged in as</div>
+          <strong id="admin-greeting">Admin</strong>
+          <div class="helper" id="admin-meta">Access: Full Control</div>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap">
+          <button class="btn btn-outline" id="logout-btn" type="button">Logout</button>
+          <a class="btn btn-outline" href="index.html">Home</a>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3><i class="fa-solid fa-user-graduate"></i> Total Students</h3>
+          <strong id="admin-total-students">0</strong>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-chalkboard-user"></i> Total Teachers</h3>
+          <strong id="admin-total-teachers">0</strong>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-layer-group"></i> Total Subjects</h3>
+          <strong id="admin-total-subjects">0</strong>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-school"></i> Total Classes</h3>
+          <strong id="admin-total-classes">0</strong>
+        </div>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" type="button" data-tab="overview">Overview</button>
+        <button class="admin-tab-btn" type="button" data-tab="users">Users</button>
+        <button class="admin-tab-btn" type="button" data-tab="subjects">Subjects</button>
+        <button class="admin-tab-btn" type="button" data-tab="classes">Classes</button>
+      </div>
+
+      <section class="section admin-tab-panel active" id="admin-tab-overview">
+        <div class="grid">
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-chart-line"></i> Attendance Rate</h3>
+            <p class="muted">Current platform-wide attendance performance.</p>
+            <strong id="admin-attendance-rate">0%</strong>
+          </div>
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-triangle-exclamation"></i> Low Attendance Students</h3>
+            <p class="muted">Students currently below the 75% threshold.</p>
+            <strong id="admin-low-attendance">0</strong>
+          </div>
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-users"></i> Managed Users</h3>
+            <p class="muted">Students and teachers visible in management tables.</p>
+            <strong id="admin-users-count">0</strong>
+          </div>
+        </div>
+        <div class="panel" style="margin-top: 16px">
+          <h3 style="margin-bottom: 10px">Quick Actions</h3>
+          <p class="muted">Send attendance alerts to students below threshold.</p>
+          <button class="btn" id="send-alerts" type="button">Send Alerts</button>
+        </div>
+      </section>
+
+      <section class="section admin-tab-panel" id="admin-tab-users">
+        <h2>Manage Users</h2>
+        <p class="muted">Create, filter, edit, and delete users with role-based controls.</p>
+
+        <div class="admin-users-shell">
+          <div class="glass-card admin-users-filters">
+            <div class="admin-users-head">
+              <h3><i class="fa-solid fa-filter"></i> Filter Directory</h3>
+              <span class="helper">Quickly find users by role, class, and year</span>
+            </div>
+            <div class="admin-filter-grid">
+              <input class="table-search" id="user-search" placeholder="Search by name or email..." />
+              <select class="table-search" id="user-role-filter">
+                <option value="all">All Roles</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+              </select>
+              <select class="table-search" id="user-class-filter">
+                <option value="all">All Classes</option>
+              </select>
+              <select class="table-search" id="user-year-filter">
+                <option value="all">All Years</option>
+              </select>
+            </div>
+          </div>
+
+          <form class="form admin-pro-form" id="user-form">
+            <div class="admin-pro-header">
+              <h3><i class="fa-solid fa-user-plus"></i> Create User Account</h3>
+              <p class="muted">Fill details based on selected role. Student and teacher fields are separated for clarity.</p>
+            </div>
+
+            <div class="admin-form-group">
+              <h4>Basic Information</h4>
+              <div class="admin-form-grid">
+                <div class="field-block">
+                  <label for="new-name">Full Name</label>
+                  <input type="text" id="new-name" placeholder="Enter full name" required />
+                </div>
+                <div class="field-block">
+                  <label for="new-email">Email</label>
+                  <input type="email" id="new-email" placeholder="name@college.edu" required />
+                </div>
+                <div class="field-block">
+                  <label for="new-password">Password</label>
+                  <input type="password" id="new-password" placeholder="Create password" />
+                </div>
+                <div class="field-block">
+                  <label for="new-role">Role</label>
+                  <select id="new-role">
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="admin-form-group role-section" id="new-student-section">
+              <h4>Student Details</h4>
+              <div class="admin-form-grid">
+                <div class="field-block">
+                  <label for="new-class">Class</label>
+                  <select id="new-class">
+                    <option value="">Select Class (for students)</option>
+                  </select>
+                </div>
+                <div class="field-block">
+                  <label for="new-year">Year</label>
+                  <select id="new-year">
+                    <option value="">Select Year (for students)</option>
+                    <option value="Year 1">1st Year</option>
+                    <option value="Year 2">2nd Year</option>
+                    <option value="Year 3">3rd Year</option>
+                  </select>
+                </div>
+                <div class="field-block">
+                  <label for="new-prn">PRN</label>
+                  <input type="text" id="new-prn" placeholder="Student PRN" />
+                </div>
+                <div class="field-block">
+                  <label for="new-birth">Birth Date</label>
+                  <input type="text" id="new-birth" placeholder="YYYY-MM-DD" />
+                </div>
+                <div class="field-block field-span-2">
+                  <label for="new-address">Address</label>
+                  <input type="text" id="new-address" placeholder="Current address" />
+                </div>
+              </div>
+            </div>
+
+            <div class="admin-form-group role-section" id="new-teacher-section">
+              <h4>Teacher Details</h4>
+              <div class="admin-form-grid">
+                <div class="field-block">
+                  <label for="new-subject">Subject</label>
+                  <input type="text" id="new-subject" placeholder="Assigned subject" />
+                </div>
+                <div class="field-block">
+                  <label for="new-teacher-class">Assigned Class</label>
+                  <select id="new-teacher-class">
+                    <option value="">Assigned Class (for teachers)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="admin-form-group role-section" id="new-admin-section">
+              <h4>Admin Details</h4>
+              <p class="helper">Admin account uses only basic information fields (name, email, password).</p>
+            </div>
+
+            <div class="admin-form-actions">
+              <button class="btn" type="submit" id="user-submit">Add User</button>
+              <button class="btn btn-outline" type="button" id="cancel-edit">Clear Form</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="glass-card" style="margin-top: 16px">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Class / Year</th>
+                <th>PRN / Subject</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section admin-tab-panel" id="admin-tab-subjects">
+        <h2>Manage Subjects</h2>
+        <p class="muted">Create, edit, and delete subject records.</p>
+
+        <form class="form" id="subject-form">
+          <input type="hidden" id="subject-edit-id" />
+          <div class="grid">
+            <input type="text" id="subject-name" placeholder="Subject Name" required />
+            <input type="text" id="subject-code" placeholder="Subject Code" required />
+            <select id="subject-class" required>
+              <option value="">Select Class</option>
+            </select>
+            <select id="subject-year" required>
+              <option value="">Select Year</option>
+              <option value="Year 1">1st Year</option>
+              <option value="Year 2">2nd Year</option>
+              <option value="Year 3">3rd Year</option>
+            </select>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap">
+            <button class="btn btn-outline" type="submit" id="subject-submit">Add Subject</button>
+            <button class="btn btn-outline" type="button" id="subject-cancel-edit">Cancel Edit</button>
+          </div>
+        </form>
+
+        <div class="glass-card" style="margin-top: 16px">
+          <div class="admin-filter-grid" style="margin-bottom: 12px">
+            <select class="table-search" id="subject-class-filter">
+              <option value="all">All Classes</option>
+            </select>
+            <select class="table-search" id="subject-year-filter">
+              <option value="all">All Years</option>
+              <option value="Year 1">1st Year</option>
+              <option value="Year 2">2nd Year</option>
+              <option value="Year 3">3rd Year</option>
+            </select>
+          </div>
+          <input class="table-search" id="subject-search" placeholder="Search subjects..." />
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Code</th>
+                <th>Class</th>
+                <th>Year</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-subjects"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section admin-tab-panel" id="admin-tab-classes">
+        <h2>Manage Classes</h2>
+        <p class="muted">Create, edit, and delete class records.</p>
+
+        <form class="form" id="class-form">
+          <input type="hidden" id="class-edit-id" />
+          <div class="grid">
+            <input type="text" id="class-name" placeholder="Class Name (e.g., BSc CS - A)" required />
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap">
+            <button class="btn btn-outline" type="submit" id="class-submit">Add Class</button>
+            <button class="btn btn-outline" type="button" id="class-cancel-edit">Cancel Edit</button>
+          </div>
+        </form>
+
+        <div class="glass-card" style="margin-top: 16px">
+          <input class="table-search" id="class-search" placeholder="Search classes..." />
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-classes"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div class="admin-modal" id="edit-user-modal" aria-hidden="true">
+      <div class="admin-modal-backdrop" id="edit-user-backdrop"></div>
+      <div class="admin-modal-card">
+        <div class="admin-modal-header">
+          <h3>Edit User</h3>
+          <button class="action-btn" type="button" id="edit-user-close">Close</button>
+        </div>
+        <form class="form" id="edit-user-form">
+          <input type="hidden" id="edit-user-id" />
+          <div class="grid">
+            <input type="text" id="edit-name" placeholder="Full Name" required />
+            <input type="email" id="edit-email" placeholder="Email" required />
+            <input type="password" id="edit-password" placeholder="Leave blank to keep current password" />
+            <select id="edit-role">
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+            </select>
+            <select id="edit-class">
+              <option value="">Select Class (for students)</option>
+            </select>
+            <select id="edit-year">
+              <option value="">Select Year (for students)</option>
+              <option value="Year 1">1st Year</option>
+              <option value="Year 2">2nd Year</option>
+              <option value="Year 3">3rd Year</option>
+            </select>
+            <input type="text" id="edit-prn" placeholder="PRN (for students)" />
+            <input type="text" id="edit-birth" placeholder="Birth Date (YYYY-MM-DD)" />
+            <input type="text" id="edit-address" placeholder="Address" />
+            <input type="text" id="edit-subject" placeholder="Subject (for teachers)" />
+            <select id="edit-teacher-class">
+              <option value="">Assigned Class (for teachers)</option>
+            </select>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap">
+            <button class="btn" type="submit">Update User</button>
+            <button class="btn btn-outline" type="button" id="edit-user-cancel">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="toast"></div>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
