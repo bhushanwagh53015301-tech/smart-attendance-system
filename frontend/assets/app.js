@@ -1,8 +1,9 @@
-const API_BASE =
-  window.SAS_API_BASE ||
-  (window.location.protocol.startsWith("http") && window.location.hostname
-    ? `${window.location.protocol}//${window.location.hostname}:8000`
-    : "http://127.0.0.1:8000");
+const configuredApiBase = String(window.SAS_API_BASE || "")
+  .trim()
+  .replace(/\/+$/, "");
+const IS_LOCAL_HOST = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+const DEMO_ONLY_MODE = !configuredApiBase && !IS_LOCAL_HOST;
+const API_BASE = configuredApiBase || "http://127.0.0.1:8000";
 
 const qs = (selector) => document.querySelector(selector);
 const qsa = (selector) => Array.from(document.querySelectorAll(selector));
@@ -392,6 +393,26 @@ const saveDemoUsers = (users) => localStorage.setItem(DEMO_USERS_KEY, JSON.strin
 
 const isLikelyBackendUnavailableResponse = (response) =>
   !response || [404, 405, 408, 500, 502, 503, 504].includes(response.status);
+
+const findDemoUserByEmailPassword = (email, password) =>
+  getDemoUsers().find(
+    (user) =>
+      String(user.email || "").toLowerCase() === String(email || "").toLowerCase() &&
+      String(user.password || "") === String(password || "")
+  );
+
+const findDemoStudentByIdPasscode = (studentId, studentPasscode) => {
+  const normalizedId = String(studentId || "").toLowerCase();
+  return getDemoUsers().find((user) => {
+    if (user.role !== "student") return false;
+    const userIdMatch = String(user.user_id || "").toLowerCase() === normalizedId;
+    const prnMatch = String(user.prn || "").toLowerCase() === normalizedId;
+    if (!userIdMatch && !prnMatch) return false;
+    const passwordMatch = String(user.password || "") === String(studentPasscode || "");
+    const birthDateMatch = user.birth_date && String(user.birth_date).trim() === String(studentPasscode || "");
+    return passwordMatch || birthDateMatch;
+  });
+};
 
 const startDemoSession = (user, options = {}) => {
   const resolvedStudentId = options.studentId || user.prn || user.user_id || "";
@@ -875,6 +896,9 @@ const ensureAuth = (role) => {
     window.location.href = "login.html";
     return false;
   }
+  if (DEMO_ONLY_MODE && !isOfflineDemo()) {
+    setOfflineDemo(true);
+  }
   if (role && currentRole !== role) {
     window.location.href = `${currentRole}.html`;
     return false;
@@ -1086,7 +1110,7 @@ const markNotificationAsRead = async (notificationId) => {
     }
     return { ok: true };
   } catch (error) {
-    return { ok: false, detail: "Backend not reachable. Start server on port 8000." };
+    return { ok: false, detail: "Service is temporarily unavailable." };
   }
 };
 
@@ -1124,7 +1148,7 @@ const createNotification = async (payload) => {
     }
     return { ok: true, data: await res.json() };
   } catch (error) {
-    return { ok: false, detail: "Backend not reachable. Start server on port 8000." };
+    return { ok: false, detail: "Service is temporarily unavailable." };
   }
 };
 
@@ -1237,6 +1261,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const studentPasscode = studentPasscodeInput.value.trim();
 
       if (mode === "id") {
+        if (DEMO_ONLY_MODE) {
+          if (!studentId || !studentPasscode) {
+            announce("Student ID and passcode are required", "error");
+            return;
+          }
+          const demoStudent = findDemoStudentByIdPasscode(studentId, studentPasscode);
+          if (!demoStudent) {
+            announce("Invalid student ID or passcode", "error");
+            return;
+          }
+          startDemoSession(demoStudent, { studentId });
+          announce("Logged in demo mode");
+          window.location.href = "student.html";
+          return;
+        }
+
         let res = null;
         try {
           res = await fetch(`${API_BASE}/login-id`, {
@@ -1265,17 +1305,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (isLikelyBackendUnavailableResponse(res)) {
-          const normalizedId = studentId.toLowerCase();
-          const demoStudent = getDemoUsers().find((user) => {
-            if (user.role !== "student") return false;
-            const userIdMatch = String(user.user_id || "").toLowerCase() === normalizedId;
-            const prnMatch = String(user.prn || "").toLowerCase() === normalizedId;
-            if (!userIdMatch && !prnMatch) return false;
-            const passwordMatch = String(user.password || "") === studentPasscode;
-            const birthDateMatch =
-              user.birth_date && String(user.birth_date).trim() === studentPasscode;
-            return passwordMatch || birthDateMatch;
-          });
+          const demoStudent = findDemoStudentByIdPasscode(studentId, studentPasscode);
           if (demoStudent) {
             startDemoSession(demoStudent, { studentId });
             announce("Logged in demo mode (backend offline)");
@@ -1293,9 +1323,24 @@ document.addEventListener("DOMContentLoaded", () => {
             // Ignore non-JSON errors
           }
         } else {
-          detail = "Backend not reachable. Start server on port 8000.";
+          detail = "Service is temporarily unavailable.";
         }
         announce(detail, "error");
+        return;
+      }
+
+      if (DEMO_ONLY_MODE) {
+        const demoUser = findDemoUserByEmailPassword(email, password);
+        if (!demoUser) {
+          announce("Invalid login details", "error");
+          return;
+        }
+        startDemoSession(demoUser);
+        if (demoUser.role !== role) {
+          announce(`You are logged in as ${demoUser.role}`, "error");
+        }
+        announce("Logged in demo mode");
+        window.location.href = `${demoUser.role}.html`;
         return;
       }
 
@@ -1312,11 +1357,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!res || !res.ok) {
         if (isLikelyBackendUnavailableResponse(res)) {
-          const demoUser = getDemoUsers().find(
-            (user) =>
-              String(user.email || "").toLowerCase() === email.toLowerCase() &&
-              String(user.password || "") === password
-          );
+          const demoUser = findDemoUserByEmailPassword(email, password);
           if (demoUser) {
             startDemoSession(demoUser);
             if (demoUser.role !== role) {
@@ -1337,7 +1378,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Ignore non-JSON errors
           }
         } else {
-          detail = "Backend not reachable. Start server on port 8000.";
+          detail = "Service is temporarily unavailable.";
         }
         announce(detail, "error");
         return;
@@ -2820,7 +2861,7 @@ document.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify(payload),
         });
       } catch (error) {
-        announce("Backend not reachable. Start server on port 8000.", "error");
+        announce("Service is temporarily unavailable.", "error");
         return;
       }
 
@@ -2913,7 +2954,7 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify(payload),
           });
         } catch (error) {
-          announce("Backend not reachable. Start server on port 8000.", "error");
+          announce("Service is temporarily unavailable.", "error");
           return;
         }
 
@@ -3013,7 +3054,7 @@ document.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify(payload),
         });
       } catch (error) {
-        announce("Backend not reachable. Start server on port 8000.", "error");
+        announce("Service is temporarily unavailable.", "error");
         return;
       }
 
@@ -3107,7 +3148,7 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify(payload),
           });
         } catch (error) {
-          announce("Backend not reachable. Start server on port 8000.", "error");
+          announce("Service is temporarily unavailable.", "error");
           return;
         }
         if (res.ok) {
@@ -3220,7 +3261,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
           res = await authFetch(`/subjects/${subjectId}`, { method: "DELETE" });
         } catch (error) {
-          announce("Backend not reachable. Start server on port 8000.", "error");
+          announce("Service is temporarily unavailable.", "error");
           return;
         }
         if (res.ok) {
@@ -3271,7 +3312,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
           res = await authFetch(`/classes/${classId}`, { method: "DELETE" });
         } catch (error) {
-          announce("Backend not reachable. Start server on port 8000.", "error");
+          announce("Service is temporarily unavailable.", "error");
           return;
         }
         if (res.ok) {
@@ -3330,7 +3371,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
           res = await authFetch(`/users/${userId}`, { method: "DELETE" });
         } catch (error) {
-          announce("Backend not reachable. Start server on port 8000.", "error");
+          announce("Service is temporarily unavailable.", "error");
           return;
         }
         if (res.ok) {
@@ -3361,5 +3402,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 
 
