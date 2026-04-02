@@ -1,7 +1,8 @@
 const API_BASE =
-  window.location.protocol.startsWith("http") && window.location.hostname
+  window.SAS_API_BASE ||
+  (window.location.protocol.startsWith("http") && window.location.hostname
     ? `${window.location.protocol}//${window.location.hostname}:8000`
-    : "http://127.0.0.1:8000";
+    : "http://127.0.0.1:8000");
 
 const qs = (selector) => document.querySelector(selector);
 const qsa = (selector) => Array.from(document.querySelectorAll(selector));
@@ -388,6 +389,19 @@ const getDemoUsers = () => {
 };
 
 const saveDemoUsers = (users) => localStorage.setItem(DEMO_USERS_KEY, JSON.stringify(users));
+
+const isLikelyBackendUnavailableResponse = (response) =>
+  !response || [404, 405, 408, 500, 502, 503, 504].includes(response.status);
+
+const startDemoSession = (user, options = {}) => {
+  const resolvedStudentId = options.studentId || user.prn || user.user_id || "";
+  localStorage.setItem("sas_token", `demo-${Date.now()}`);
+  localStorage.setItem("sas_role", user.role || "student");
+  localStorage.setItem("sas_user_id", user.user_id || user.email || String(Date.now()));
+  localStorage.setItem("sas_student_id", resolvedStudentId);
+  setDemoProfile(user);
+  setOfflineDemo(true);
+};
 
 const normalizeDemoClass = (value = "") => {
   const cleaned = String(value || "").trim();
@@ -1249,6 +1263,27 @@ document.addEventListener("DOMContentLoaded", () => {
           announce("Student ID and passcode are required", "error");
           return;
         }
+
+        if (isLikelyBackendUnavailableResponse(res)) {
+          const normalizedId = studentId.toLowerCase();
+          const demoStudent = getDemoUsers().find((user) => {
+            if (user.role !== "student") return false;
+            const userIdMatch = String(user.user_id || "").toLowerCase() === normalizedId;
+            const prnMatch = String(user.prn || "").toLowerCase() === normalizedId;
+            if (!userIdMatch && !prnMatch) return false;
+            const passwordMatch = String(user.password || "") === studentPasscode;
+            const birthDateMatch =
+              user.birth_date && String(user.birth_date).trim() === studentPasscode;
+            return passwordMatch || birthDateMatch;
+          });
+          if (demoStudent) {
+            startDemoSession(demoStudent, { studentId });
+            announce("Logged in demo mode (backend offline)");
+            window.location.href = "student.html";
+            return;
+          }
+        }
+
         let detail = "Invalid student ID or passcode";
         if (res) {
           try {
@@ -1276,6 +1311,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (!res || !res.ok) {
+        if (isLikelyBackendUnavailableResponse(res)) {
+          const demoUser = getDemoUsers().find(
+            (user) =>
+              String(user.email || "").toLowerCase() === email.toLowerCase() &&
+              String(user.password || "") === password
+          );
+          if (demoUser) {
+            startDemoSession(demoUser);
+            if (demoUser.role !== role) {
+              announce(`You are logged in as ${demoUser.role}`, "error");
+            }
+            announce("Logged in demo mode (backend offline)");
+            window.location.href = `${demoUser.role}.html`;
+            return;
+          }
+        }
+
         let detail = "Invalid login details";
         if (res) {
           try {
