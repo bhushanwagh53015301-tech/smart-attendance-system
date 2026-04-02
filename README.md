@@ -30,6 +30,20 @@ The API will be available at `http://localhost:8000`.
 
 Open `frontend/index.html` in your browser. Login to access dashboards.
 
+### Live API Configuration
+
+For production hosting, set your backend URL in `frontend/assets/config.js`:
+
+```js
+window.SAS_API_BASE = "https://your-backend-domain";
+```
+
+Example:
+
+```js
+window.SAS_API_BASE = "https://smart-attendance-api.onrender.com";
+```
+
 ## Sample Login Credentials
 
 - Admin: `admin@smartattendance.edu` / `Admin@123`
