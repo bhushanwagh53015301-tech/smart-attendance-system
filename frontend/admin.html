@@ -83,6 +83,62 @@
           <p class="muted">Send attendance alerts to students below threshold.</p>
           <button class="btn" id="send-alerts" type="button">Send Alerts</button>
         </div>
+        <div class="split" style="margin-top: 16px">
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-chalkboard-user"></i> Teacher Class Mapping</h3>
+            <p class="muted">Shows which teacher is handling which class and subject.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Teacher</th>
+                  <th>Subject</th>
+                  <th>Class</th>
+                </tr>
+              </thead>
+              <tbody id="admin-teacher-class-map"></tbody>
+            </table>
+          </div>
+          <div class="glass-card">
+            <h3><i class="fa-solid fa-user-check"></i> Present Students</h3>
+            <p class="muted">
+              Students marked present on
+              <strong id="admin-present-date">--</strong>.
+            </p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Class</th>
+                  <th>Subject</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="admin-present-students"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel" style="margin-top: 16px">
+          <h3 style="margin-bottom: 10px">Broadcast Notification</h3>
+          <p class="muted">Post holiday updates and event alerts for students and teachers.</p>
+          <form class="form" id="admin-notification-form">
+            <input type="text" id="notice-title" placeholder="Title (e.g., College Holiday)" required />
+            <textarea id="notice-message" rows="3" placeholder="Write the full notification message..." required></textarea>
+            <div class="grid">
+              <select id="notice-kind">
+                <option value="general">General</option>
+                <option value="holiday">Holiday</option>
+                <option value="event">Event</option>
+              </select>
+              <select id="notice-audience">
+                <option value="all">Students + Teachers</option>
+                <option value="student">Students only</option>
+                <option value="teacher">Teachers only</option>
+              </select>
+            </div>
+            <button class="btn" type="submit">Send Notification</button>
+          </form>
+          <div class="list" id="admin-notification-list" style="margin-top: 14px"></div>
+        </div>
       </section>
 
       <section class="section admin-tab-panel" id="admin-tab-users">

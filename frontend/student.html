@@ -28,6 +28,13 @@
           <div class="helper">Logged in as</div>
           <strong id="student-greeting">Student</strong>
           <div class="helper" id="student-meta">ID: -- | Class: --</div>
+          <div class="bell-wrap">
+            <button class="bell-btn" id="student-bell-btn" type="button" aria-label="Open notifications">
+              <i class="fa-solid fa-bell"></i>
+              <span class="bell-count" id="student-unread-count">0</span>
+            </button>
+            <div class="bell-menu" id="student-bell-menu"></div>
+          </div>
         </div>
         <div style="display: flex; gap: 12px; flex-wrap: wrap">
           <button class="btn btn-outline" id="logout-btn" type="button">Logout</button>
@@ -69,8 +76,8 @@
         </div>
         <div class="glass-card">
           <h3>Notifications</h3>
-          <p class="muted">Low attendance alerts will appear here.</p>
-          <div class="badge warning">Maintain 75% in Data Structures</div>
+          <p class="muted">Holiday and event alerts from admin.</p>
+          <div class="list" id="student-notifications"></div>
         </div>
       </div>
 
@@ -183,18 +190,20 @@
 
       <section class="section">
         <h2>College Announcements</h2>
-        <div class="grid">
-          <div class="glass-card">
-            <h3>Guest Lecture</h3>
-            <p class="muted">AI for Education talk this Friday at the main auditorium.</p>
-          </div>
-          <div class="glass-card">
-            <h3>Library Drive</h3>
-            <p class="muted">Submit all overdue books before semester-end.</p>
-          </div>
-        </div>
+        <div class="list" id="student-announcements"></div>
       </section>
     </div>
+    <div class="floating-notice" id="student-floating-notice" aria-live="polite">
+      <button type="button" class="floating-notice-close" id="student-floating-close">Dismiss</button>
+      <div class="floating-notice-label">New Notification</div>
+      <h4 id="student-floating-title">Title</h4>
+      <p id="student-floating-message">Message</p>
+    </div>
+    <button class="floating-bell-btn" id="student-fab-bell" type="button" aria-label="Open notifications">
+      <i class="fa-solid fa-bell"></i>
+      <span class="bell-count" id="student-fab-unread-count">0</span>
+    </button>
+    <div class="bell-menu bell-menu-fab" id="student-fab-menu"></div>
     <div class="toast"></div>
     <script src="assets/app.js"></script>
   </body>

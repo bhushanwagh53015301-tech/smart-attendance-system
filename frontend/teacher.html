@@ -28,6 +28,13 @@
           <div class="helper">Logged in as</div>
           <strong id="teacher-greeting">Teacher</strong>
           <div class="helper" id="teacher-meta">Subject: --</div>
+          <div class="bell-wrap">
+            <button class="bell-btn" id="teacher-bell-btn" type="button" aria-label="Open notifications">
+              <i class="fa-solid fa-bell"></i>
+              <span class="bell-count" id="teacher-unread-count">0</span>
+            </button>
+            <div class="bell-menu" id="teacher-bell-menu"></div>
+          </div>
         </div>
         <div style="display: flex; gap: 12px; flex-wrap: wrap">
           <button class="btn btn-outline" id="logout-btn" type="button">Logout</button>
@@ -49,6 +56,11 @@
           <strong>09:30 AM</strong>
         </div>
       </div>
+
+      <section class="section" style="padding-top: 10px">
+        <h2>Admin Notifications</h2>
+        <div class="list" id="teacher-notifications"></div>
+      </section>
 
       <section class="section">
         <h2>Mark Attendance</h2>
@@ -141,6 +153,11 @@
         </div>
       </section>
     </div>
+    <button class="floating-bell-btn" id="teacher-fab-bell" type="button" aria-label="Open notifications">
+      <i class="fa-solid fa-bell"></i>
+      <span class="bell-count" id="teacher-fab-unread-count">0</span>
+    </button>
+    <div class="bell-menu bell-menu-fab" id="teacher-fab-menu"></div>
     <div class="toast"></div>
     <script src="assets/app.js"></script>
   </body>

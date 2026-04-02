@@ -19,7 +19,7 @@ from .auth import (
     verify_password,
 )
 from .database import Base, engine
-from .models import Attendance, ClassRoom, Student, Subject, Teacher, User
+from .models import Attendance, ClassRoom, Notification, NotificationRead, Student, Subject, Teacher, User
 from .schemas import (
     AttendanceBulk,
     AttendanceOut,
@@ -29,6 +29,8 @@ from .schemas import (
     DashboardStats,
     LoginIdRequest,
     LoginRequest,
+    NotificationCreate,
+    NotificationOut,
     SelfAttendanceRequest,
     StudentOut,
     SubjectCreate,
@@ -183,6 +185,33 @@ def run_migrations() -> None:
             )
             conn.execute(text("DROP TABLE subjects_old"))
             conn.execute(text("CREATE INDEX IF NOT EXISTS ix_subjects_id ON subjects (id)"))
+
+        # Keep notifications schema backward-compatible with older DB files.
+        notification_result = conn.execute(text("PRAGMA table_info(notifications)"))
+        notification_columns = {row[1] for row in notification_result}
+        if "kind" not in notification_columns:
+            conn.execute(text("ALTER TABLE notifications ADD COLUMN kind VARCHAR(20) DEFAULT 'general'"))
+        if "audience" not in notification_columns:
+            conn.execute(text("ALTER TABLE notifications ADD COLUMN audience VARCHAR(20) DEFAULT 'all'"))
+        if "created_by" not in notification_columns:
+            conn.execute(text("ALTER TABLE notifications ADD COLUMN created_by VARCHAR(120) DEFAULT 'Admin'"))
+        if "created_at" not in notification_columns:
+            conn.execute(text("ALTER TABLE notifications ADD COLUMN created_at DATETIME DEFAULT CURRENT_TIMESTAMP"))
+        conn.execute(text("UPDATE notifications SET kind = 'general' WHERE kind IS NULL OR kind = ''"))
+        conn.execute(text("UPDATE notifications SET audience = 'all' WHERE audience IS NULL OR audience = ''"))
+        conn.execute(text("UPDATE notifications SET created_by = 'Admin' WHERE created_by IS NULL OR created_by = ''"))
+        conn.execute(text("UPDATE notifications SET created_at = CURRENT_TIMESTAMP WHERE created_at IS NULL OR created_at = ''"))
+
+        notification_reads_exists = conn.execute(
+            text("SELECT name FROM sqlite_master WHERE type='table' AND name='notification_reads'")
+        ).fetchone()
+        if notification_reads_exists:
+            conn.execute(
+                text(
+                    "CREATE UNIQUE INDEX IF NOT EXISTS uq_notification_user_read "
+                    "ON notification_reads (notification_id, user_id)"
+                )
+            )
 
 
 def ensure_class_exists(db: Session, class_name: str) -> None:
@@ -993,6 +1022,101 @@ def send_low_attendance_notifications(
         if rate < 75:
             notified.append(user.email)
     return {"message": "Email notifications simulated", "recipients": notified}
+
+
+@app.post("/notifications", response_model=NotificationOut)
+def create_notification(
+    payload: NotificationCreate,
+    db: Session = Depends(get_db),
+    user: User = Depends(require_role("admin")),
+):
+    item = Notification(
+        title=payload.title.strip(),
+        message=payload.message.strip(),
+        kind=payload.kind,
+        audience=payload.audience,
+        created_by=user.name,
+    )
+    db.add(item)
+    db.commit()
+    db.refresh(item)
+    return NotificationOut(
+        id=item.id,
+        title=item.title,
+        message=item.message,
+        kind=item.kind,
+        audience=item.audience,
+        created_by=item.created_by,
+        created_at=item.created_at,
+        read=False,
+    )
+
+
+@app.get("/notifications", response_model=List[NotificationOut])
+def list_notifications(
+    limit: int = 20,
+    db: Session = Depends(get_db),
+    user: User = Depends(require_role("admin", "teacher", "student")),
+):
+    bounded_limit = min(max(limit, 1), 100)
+    query = db.query(Notification)
+    if user.role == "teacher":
+        query = query.filter(Notification.audience.in_(["all", "teacher"]))
+    elif user.role == "student":
+        query = query.filter(Notification.audience.in_(["all", "student"]))
+
+    items = query.order_by(Notification.created_at.desc()).limit(bounded_limit).all()
+    item_ids = [item.id for item in items]
+    read_ids = set()
+    if item_ids:
+        rows = (
+            db.query(NotificationRead.notification_id)
+            .filter(
+                NotificationRead.user_id == user.id,
+                NotificationRead.notification_id.in_(item_ids),
+            )
+            .all()
+        )
+        read_ids = {row[0] for row in rows}
+    return [
+        NotificationOut(
+            id=item.id,
+            title=item.title,
+            message=item.message,
+            kind=item.kind,
+            audience=item.audience,
+            created_by=item.created_by,
+            created_at=item.created_at,
+            read=item.id in read_ids,
+        )
+        for item in items
+    ]
+
+
+@app.post("/notifications/{notification_id}/read")
+def mark_notification_read(
+    notification_id: int,
+    db: Session = Depends(get_db),
+    user: User = Depends(require_role("admin", "teacher", "student")),
+):
+    item = db.query(Notification).filter(Notification.id == notification_id).first()
+    if not item:
+        raise HTTPException(status_code=404, detail="Notification not found")
+
+    existing = (
+        db.query(NotificationRead)
+        .filter(
+            NotificationRead.notification_id == notification_id,
+            NotificationRead.user_id == user.id,
+        )
+        .first()
+    )
+    if existing:
+        return {"status": "already_read"}
+
+    db.add(NotificationRead(notification_id=notification_id, user_id=user.id))
+    db.commit()
+    return {"status": "ok"}
 
 
 @app.patch("/users/{user_id}", response_model=UserOut)

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, datetime
 from typing import List, Optional
 
 from pydantic import BaseModel, EmailStr, Field
@@ -148,3 +148,21 @@ class DashboardStats(BaseModel):
     total_subjects: int
     attendance_rate: float
     low_attendance_count: int
+
+
+class NotificationCreate(BaseModel):
+    title: str = Field(..., min_length=2, max_length=140)
+    message: str = Field(..., min_length=4, max_length=500)
+    kind: str = Field(default="general", pattern="^(general|holiday|event)$")
+    audience: str = Field(default="all", pattern="^(all|student|teacher)$")
+
+
+class NotificationOut(BaseModel):
+    id: int
+    title: str
+    message: str
+    kind: str
+    audience: str
+    created_by: str
+    created_at: datetime
+    read: bool = False

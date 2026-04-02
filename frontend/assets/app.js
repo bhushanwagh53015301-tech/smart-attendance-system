@@ -71,15 +71,15 @@ const DEMO_USERS_KEY = "sas_demo_users";
 const defaultDemoUsers = [
   {
     user_id: "SMJ-24001",
-    email: "sonam@smjoshi.edu",
+    email: "aarti.shinde@smjoshi.edu",
     password: "Sonam@123",
-    name: "Sonam Shirke",
-    student_class: "CSE-A",
-    year: "3rd",
+    name: "Aarti Shinde",
+    student_class: "BSc CS - A",
+    year: "Year 3",
     department: "Computer Science",
     semester: "Semester 6",
     phone: "+91 98765 12301",
-    guardian: "Mr. Shirke - 98765 11001",
+    guardian: "Mr. Shinde - 98765 11001",
     prn: "SMJ-24001",
     birth_date: "2005-04-18",
     address: "Hadapsar, Pune",
@@ -87,15 +87,15 @@ const defaultDemoUsers = [
   },
   {
     user_id: "SMJ-24002",
-    email: "shraddha@smjoshi.edu",
+    email: "nilesh.pawar@smjoshi.edu",
     password: "Shraddha@123",
-    name: "Shraddha",
-    student_class: "CSE-B",
-    year: "2nd",
+    name: "Nilesh Pawar",
+    student_class: "BSc CS - B",
+    year: "Year 2",
     department: "Computer Science",
     semester: "Semester 4",
     phone: "+91 98765 12302",
-    guardian: "Mrs. More - 98765 11002",
+    guardian: "Mrs. Pawar - 98765 11002",
     prn: "SMJ-24002",
     birth_date: "2006-01-07",
     address: "Manjri, Pune",
@@ -103,11 +103,11 @@ const defaultDemoUsers = [
   },
   {
     user_id: "SMJ-24003",
-    email: "kajal@smjoshi.edu",
+    email: "kajal.kamthe@smjoshi.edu",
     password: "Kajal@123",
     name: "Kajal Kamthe",
-    student_class: "IT-A",
-    year: "3rd",
+    student_class: "IT - A",
+    year: "Year 3",
     department: "Information Technology",
     semester: "Semester 6",
     phone: "+91 98765 12303",
@@ -119,10 +119,10 @@ const defaultDemoUsers = [
   },
   {
     user_id: "SMJ-T-101",
-    email: "pratima@smjoshi.edu",
+    email: "pratima.kulkarni@smjoshi.edu",
     password: "Pratima@123",
-    name: "Pratima Mam",
-    subject: "DBMS",
+    name: "Pratima Kulkarni",
+    subject: "Database Management Systems",
     class_name: "BSc CS - A",
     phone: "+91 98220 11001",
     department: "Computer Science",
@@ -130,9 +130,9 @@ const defaultDemoUsers = [
   },
   {
     user_id: "SMJ-T-102",
-    email: "nayan@smjoshi.edu",
+    email: "nayan.more@smjoshi.edu",
     password: "Nayan@123",
-    name: "Nayan Mam",
+    name: "Nayan More",
     subject: "Operating Systems",
     class_name: "BSc CS - B",
     phone: "+91 98220 11002",
@@ -151,6 +151,17 @@ const defaultDemoUsers = [
     role: "teacher",
   },
   {
+    user_id: "SMJ-T-104",
+    email: "snehal.patil@smjoshi.edu",
+    password: "Snehal@123",
+    name: "Snehal Patil",
+    subject: "Web Technologies",
+    class_name: "IT - B",
+    phone: "+91 98220 11004",
+    department: "Information Technology",
+    role: "teacher",
+  },
+  {
     user_id: "SMJ-A-01",
     email: "yadav@smjoshi.edu",
     password: "Yadav@123",
@@ -158,6 +169,166 @@ const defaultDemoUsers = [
     phone: "+91 98220 11999",
     department: "Administration",
     role: "admin",
+  },
+  {
+    user_id: "SMJ-24004",
+    email: "pranjal@smjoshi.edu",
+    password: "Pranjal@123",
+    name: "Pranjal Patil",
+    student_class: "BSc CS - A",
+    year: "Year 2",
+    department: "Computer Science",
+    semester: "Semester 4",
+    phone: "+91 98765 12304",
+    guardian: "Mr. Patil - 98765 11004",
+    prn: "SMJ-24004",
+    birth_date: "2005-11-03",
+    address: "Magarpatta, Pune",
+    role: "student",
+  },
+  {
+    user_id: "SMJ-24005",
+    email: "meenal@smjoshi.edu",
+    password: "Meenal@123",
+    name: "Meenal Jadhav",
+    student_class: "IT - A",
+    year: "Year 3",
+    department: "Information Technology",
+    semester: "Semester 6",
+    phone: "+91 98765 12305",
+    guardian: "Mrs. Jadhav - 98765 11005",
+    prn: "SMJ-24005",
+    birth_date: "2004-12-21",
+    address: "Kharadi, Pune",
+    role: "student",
+  },
+  {
+    user_id: "SMJ-24006",
+    email: "rohan.dhumal@smjoshi.edu",
+    password: "Rohan@123",
+    name: "Rohan Dhumal",
+    student_class: "BSc CS - A",
+    year: "Year 1",
+    department: "Computer Science",
+    semester: "Semester 2",
+    phone: "+91 98765 12306",
+    guardian: "Mr. Dhumal - 98765 11006",
+    prn: "SMJ-24006",
+    birth_date: "2007-02-11",
+    address: "Amanora, Pune",
+    role: "student",
+  },
+  {
+    user_id: "SMJ-24007",
+    email: "sakshi.gaikwad@smjoshi.edu",
+    password: "Sakshi@123",
+    name: "Sakshi Gaikwad",
+    student_class: "BSc CS - B",
+    year: "Year 1",
+    department: "Computer Science",
+    semester: "Semester 2",
+    phone: "+91 98765 12307",
+    guardian: "Mrs. Gaikwad - 98765 11007",
+    prn: "SMJ-24007",
+    birth_date: "2007-05-19",
+    address: "Sasane Nagar, Pune",
+    role: "student",
+  },
+  {
+    user_id: "SMJ-24008",
+    email: "aditya.sawant@smjoshi.edu",
+    password: "Aditya@123",
+    name: "Aditya Sawant",
+    student_class: "IT - A",
+    year: "Year 2",
+    department: "Information Technology",
+    semester: "Semester 4",
+    phone: "+91 98765 12308",
+    guardian: "Mr. Sawant - 98765 11008",
+    prn: "SMJ-24008",
+    birth_date: "2006-08-09",
+    address: "Fursungi, Pune",
+    role: "student",
+  },
+  {
+    user_id: "SMJ-24009",
+    email: "pooja.salunke@smjoshi.edu",
+    password: "Pooja@123",
+    name: "Pooja Salunke",
+    student_class: "IT - B",
+    year: "Year 2",
+    department: "Information Technology",
+    semester: "Semester 4",
+    phone: "+91 98765 12309",
+    guardian: "Mrs. Salunke - 98765 11009",
+    prn: "SMJ-24009",
+    birth_date: "2006-10-28",
+    address: "Camp, Pune",
+    role: "student",
+  },
+  {
+    user_id: "SMJ-24010",
+    email: "tanmay.bhosale@smjoshi.edu",
+    password: "Tanmay@123",
+    name: "Tanmay Bhosale",
+    student_class: "BSc CS - A",
+    year: "Year 3",
+    department: "Computer Science",
+    semester: "Semester 6",
+    phone: "+91 98765 12310",
+    guardian: "Mr. Bhosale - 98765 11010",
+    prn: "SMJ-24010",
+    birth_date: "2005-01-14",
+    address: "Wanowrie, Pune",
+    role: "student",
+  },
+  {
+    user_id: "SMJ-24011",
+    email: "priya.ghule@smjoshi.edu",
+    password: "Priya@123",
+    name: "Priya Ghule",
+    student_class: "BSc CS - B",
+    year: "Year 3",
+    department: "Computer Science",
+    semester: "Semester 6",
+    phone: "+91 98765 12311",
+    guardian: "Mrs. Ghule - 98765 11011",
+    prn: "SMJ-24011",
+    birth_date: "2005-03-27",
+    address: "Mundhwa, Pune",
+    role: "student",
+  },
+  {
+    user_id: "SMJ-24012",
+    email: "vinayak.jagte@smjoshi.edu",
+    password: "Vinayak@123",
+    name: "Vinayak Jagte",
+    student_class: "IT - A",
+    year: "Year 1",
+    department: "Information Technology",
+    semester: "Semester 2",
+    phone: "+91 98765 12312",
+    guardian: "Mr. Jagte - 98765 11012",
+    prn: "SMJ-24012",
+    birth_date: "2007-07-06",
+    address: "Keshav Nagar, Pune",
+    role: "student",
+  },
+  {
+    user_id: "SMJ-24013",
+    email: "mitali.surve@smjoshi.edu",
+    password: "Mitali@123",
+    name: "Mitali Surve",
+    student_class: "IT - B",
+    year: "Year 1",
+    department: "Information Technology",
+    semester: "Semester 2",
+    phone: "+91 98765 12313",
+    guardian: "Mrs. Surve - 98765 11013",
+    prn: "SMJ-24013",
+    birth_date: "2007-09-12",
+    address: "Magarpatta, Pune",
+    role: "student",
   },
   {
     user_id: "SMJ-T-LEGACY",
@@ -189,11 +360,8 @@ const defaultDemoUsers = [
 ];
 
 const ensureLegacyDemoUsers = (users) => {
-  const required = defaultDemoUsers.filter((user) =>
-    ["teacher@smartattendance.edu", "student@smartattendance.edu"].includes(
-      user.email.toLowerCase()
-    )
-  );
+  const requiredEmails = defaultDemoUsers.map((user) => String(user.email || "").toLowerCase());
+  const required = defaultDemoUsers.filter((user) => requiredEmails.includes(user.email.toLowerCase()));
   const existingEmails = new Set(users.map((user) => String(user.email || "").toLowerCase()));
   const missing = required.filter((user) => !existingEmails.has(user.email.toLowerCase()));
   if (!missing.length) return users;
@@ -220,6 +388,51 @@ const getDemoUsers = () => {
 };
 
 const saveDemoUsers = (users) => localStorage.setItem(DEMO_USERS_KEY, JSON.stringify(users));
+
+const normalizeDemoClass = (value = "") => {
+  const cleaned = String(value || "").trim();
+  const compact = cleaned.toLowerCase().replace(/[^a-z0-9]/g, "");
+  if (compact === "csea") return "BSc CS - A";
+  if (compact === "cseb") return "BSc CS - B";
+  if (compact === "ita") return "IT - A";
+  if (compact === "itb") return "IT - B";
+  return cleaned || "BSc CS - A";
+};
+
+const toDemoYear = (value = "") => {
+  const compact = String(value || "").trim().toLowerCase();
+  if (["year 1", "1st", "first", "fy", "fybsc"].includes(compact)) return "Year 1";
+  if (["year 2", "2nd", "second", "sy", "sybsc"].includes(compact)) return "Year 2";
+  if (["year 3", "3rd", "third", "ty", "tybsc"].includes(compact)) return "Year 3";
+  return "Year 2";
+};
+
+const getDemoStudentsData = () =>
+  getDemoUsers()
+    .filter((user) => user.role === "student")
+    .map((student) => ({
+      id: student.user_id,
+      user_id: student.user_id,
+      name: student.name,
+      email: student.email,
+      student_class: normalizeDemoClass(student.student_class),
+      year: toDemoYear(student.year),
+      prn: student.prn,
+      birth_date: student.birth_date,
+      address: student.address,
+    }));
+
+const getDemoTeachersData = () =>
+  getDemoUsers()
+    .filter((user) => user.role === "teacher")
+    .map((teacher) => ({
+      id: teacher.user_id,
+      user_id: teacher.user_id,
+      name: teacher.name,
+      email: teacher.email,
+      subject: teacher.subject,
+      class_name: normalizeDemoClass(teacher.class_name || "BSc CS - A"),
+    }));
 
 const getDemoSubjects = () => {
   const cached = localStorage.getItem(DEMO_SUBJECTS_KEY);
@@ -272,25 +485,90 @@ const getDemoClasses = () => {
 const saveDemoClasses = (classes) =>
   localStorage.setItem(DEMO_CLASSES_KEY, JSON.stringify(classes));
 
+const DEMO_NOTIFICATIONS_KEY = "sas_demo_notifications";
+const defaultDemoNotifications = [
+  {
+    id: "N-1001",
+    title: "Ram Navami Holiday",
+    message: "College will remain closed on April 17 for Ram Navami.",
+    kind: "holiday",
+    audience: "all",
+    created_by: "Admin",
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "N-1002",
+    title: "Hackathon Registration",
+    message: "Register for the Smart Campus Hackathon before Friday 5 PM.",
+    kind: "event",
+    audience: "student",
+    created_by: "Admin",
+    created_at: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
+  },
+];
+
+const getDemoNotifications = () => {
+  const cached = localStorage.getItem(DEMO_NOTIFICATIONS_KEY);
+  if (cached) {
+    try {
+      return JSON.parse(cached);
+    } catch (error) {
+      // ignore and rebuild defaults
+    }
+  }
+  localStorage.setItem(DEMO_NOTIFICATIONS_KEY, JSON.stringify(defaultDemoNotifications));
+  return [...defaultDemoNotifications];
+};
+
+const saveDemoNotifications = (items) =>
+  localStorage.setItem(DEMO_NOTIFICATIONS_KEY, JSON.stringify(items));
+
+const getDemoNotificationReadKey = () => `sas_demo_notification_reads_${getUserId() || getRole() || "guest"}`;
+const getDemoNotificationReads = () => {
+  const cached = localStorage.getItem(getDemoNotificationReadKey());
+  if (!cached) return [];
+  try {
+    return JSON.parse(cached);
+  } catch (error) {
+    return [];
+  }
+};
+const saveDemoNotificationReads = (ids) =>
+  localStorage.setItem(getDemoNotificationReadKey(), JSON.stringify(ids));
+
 const ensureDemoAttendance = () => {
   const cached = localStorage.getItem("sas_demo_attendance");
-  if (cached) return JSON.parse(cached);
+  if (cached) {
+    try {
+      const parsed = JSON.parse(cached);
+      if (Array.isArray(parsed) && parsed.length && parsed.some((item) => item.student_id)) {
+        return parsed;
+      }
+    } catch (error) {
+      // ignore and rebuild below
+    }
+  }
   const demoSubjects = getDemoSubjects();
-  const subjectNames = demoSubjects.length
-    ? demoSubjects.map((subject) => subject.name)
-    : ["General"];
+  const demoStudents = getDemoStudentsData();
+  const subjectNames = demoSubjects.length ? demoSubjects.map((subject) => subject.name) : ["General"];
   const today = new Date();
   const demo = [];
-  for (let i = 0; i < 10; i += 1) {
-    const date = new Date(today);
-    date.setDate(today.getDate() - i);
-    demo.push({
-      subject: subjectNames[i % subjectNames.length],
-      date: date.toISOString(),
-      status: i % 4 === 0 ? "Absent" : "Present",
-      student_name: "You",
-    });
-  }
+  demoStudents.forEach((student, studentIndex) => {
+    for (let dayOffset = 0; dayOffset < 6; dayOffset += 1) {
+      const date = new Date(today);
+      date.setDate(today.getDate() - dayOffset);
+      const status = (dayOffset + studentIndex) % 5 === 0 ? "Absent" : "Present";
+      demo.push({
+        student_id: student.id,
+        student_name: student.name,
+        student_class: student.student_class,
+        year: student.year,
+        subject: subjectNames[(studentIndex + dayOffset) % subjectNames.length],
+        date: date.toISOString(),
+        status,
+      });
+    }
+  });
   localStorage.setItem("sas_demo_attendance", JSON.stringify(demo));
   return demo;
 };
@@ -298,8 +576,120 @@ const ensureDemoAttendance = () => {
 const getLocalCheckins = () => JSON.parse(localStorage.getItem("sas_local_checkins") || "[]");
 const saveLocalCheckins = (items) => localStorage.setItem("sas_local_checkins", JSON.stringify(items));
 
-const getLocalLeaves = () => JSON.parse(localStorage.getItem("sas_local_leaves") || "[]");
+const defaultDemoLeaves = [
+  {
+    leave_id: "L-DEMO-001",
+    reason: "Medical",
+    type: "medical",
+    from: "2026-04-02",
+    to: "2026-04-03",
+    status: "Pending",
+    student_id: "SMJ-24001",
+    student_name: "Sonam Shirke",
+    student_class: "CSE-A",
+    submitted_at: "2026-03-30T09:30:00.000Z",
+  },
+  {
+    leave_id: "L-DEMO-002",
+    reason: "Family function",
+    type: "personal",
+    from: "2026-04-08",
+    to: "2026-04-09",
+    status: "Approved",
+    student_id: "SMJ-24002",
+    student_name: "Shraddha",
+    student_class: "CSE-B",
+    submitted_at: "2026-03-29T12:45:00.000Z",
+  },
+  {
+    leave_id: "L-DEMO-003",
+    reason: "Hackathon participation",
+    type: "event",
+    from: "2026-04-12",
+    to: "2026-04-13",
+    status: "Pending",
+    student_id: "SMJ-24003",
+    student_name: "Kajal Kamthe",
+    student_class: "IT-A",
+    submitted_at: "2026-03-28T10:15:00.000Z",
+  },
+  {
+    leave_id: "L-DEMO-004",
+    reason: "Travel delay",
+    type: "personal",
+    from: "2026-04-15",
+    to: "2026-04-16",
+    status: "Rejected",
+    student_id: "PRN2026-001",
+    student_name: "Riya Student",
+    student_class: "BSc CS - A",
+    submitted_at: "2026-03-27T16:20:00.000Z",
+  },
+];
+
+const getLocalLeaves = () => {
+  const cached = localStorage.getItem("sas_local_leaves");
+  if (!cached) {
+    localStorage.setItem("sas_local_leaves", JSON.stringify(defaultDemoLeaves));
+    return [...defaultDemoLeaves];
+  }
+  try {
+    const parsed = JSON.parse(cached);
+    if (Array.isArray(parsed) && parsed.length) return parsed;
+    localStorage.setItem("sas_local_leaves", JSON.stringify(defaultDemoLeaves));
+    return [...defaultDemoLeaves];
+  } catch (error) {
+    localStorage.setItem("sas_local_leaves", JSON.stringify(defaultDemoLeaves));
+    return [...defaultDemoLeaves];
+  }
+};
 const saveLocalLeaves = (items) => localStorage.setItem("sas_local_leaves", JSON.stringify(items));
+const ensureLeaveId = (item, index) => item.leave_id || item.submitted_at || `L-${index}`;
+const leaveStatusClass = (status = "") => {
+  const normalized = String(status).trim().toLowerCase();
+  if (normalized === "approved") return "success";
+  if (normalized === "rejected") return "error";
+  return "warning";
+};
+const leaveReasonLabel = (item = {}) => {
+  const reason = String(item.reason || "Leave").trim();
+  const type = String(item.type || "").trim();
+  if (!type) return reason;
+  const typeLower = type.toLowerCase();
+  if (reason.toLowerCase().includes(`(${typeLower})`)) return reason;
+  return `${reason} (${type})`;
+};
+const leaveDateLabel = (item = {}) => {
+  const from = String(item.from || "").trim();
+  const to = String(item.to || "").trim();
+  if (from && to) return from === to ? from : `${from} to ${to}`;
+  if (from) return from;
+  if (to) return to;
+  return "Date not specified";
+};
+
+const renderStudentLeaveStatus = () => {
+  const leaveStatus = qs("#leave-status");
+  if (!leaveStatus) return;
+  const leaves = getLocalLeaves();
+  leaveStatus.innerHTML = (leaves.length
+    ? leaves
+    : [{ reason: "Medical", from: "2026-03-10", to: "2026-03-12", status: "Approved" }]
+  )
+    .slice(0, 5)
+    .map(
+      (item) => `
+      <div class="list-item">
+        <div>
+          <strong>${leaveReasonLabel(item)}</strong>
+          <p class="muted">${leaveDateLabel(item)}</p>
+        </div>
+        <span class="status-pill ${leaveStatusClass(item.status)}">${item.status || "Pending"}</span>
+      </div>
+    `
+    )
+    .join("");
+};
 
 const renderTeacherLeaveRequests = () => {
   const leaveContainer = qs("#teacher-leave-requests");
@@ -312,18 +702,40 @@ const renderTeacherLeaveRequests = () => {
   leaveContainer.innerHTML = leaves
     .slice(0, 12)
     .map(
-      (item) => `
+      (item, index) => `
       <div class="list-item">
         <div>
           <strong>${item.student_name || "Student"} (${item.student_id || "--"})</strong>
-          <p class="muted">${item.reason}</p>
-          <p class="muted">${item.from} to ${item.to}</p>
+          <p class="muted">Class: ${item.student_class || "--"}</p>
+          <p class="muted">${leaveReasonLabel(item)}</p>
+          <p class="muted">${leaveDateLabel(item)}</p>
         </div>
-        <span class="status-pill ${item.status === "Approved" ? "" : "warning"}">${item.status || "Pending"}</span>
+        <div style="display: grid; gap: 8px; justify-items: end">
+          <span class="status-pill ${leaveStatusClass(item.status)}">${item.status || "Pending"}</span>
+          ${
+            item.status === "Pending" || !item.status
+              ? `<div style="display:flex; gap:6px">
+                  <button type="button" class="action-btn primary leave-approve-btn" data-leave-id="${ensureLeaveId(item, index)}">Approve</button>
+                  <button type="button" class="action-btn danger leave-reject-btn" data-leave-id="${ensureLeaveId(item, index)}">Reject</button>
+                </div>`
+              : ""
+          }
+        </div>
       </div>
     `
     )
     .join("");
+};
+
+const updateLeaveRequestStatus = (leaveId, status) => {
+  const leaves = getLocalLeaves();
+  const index = leaves.findIndex(
+    (item, idx) => String(ensureLeaveId(item, idx)) === String(leaveId)
+  );
+  if (index < 0) return false;
+  leaves[index] = { ...leaves[index], status };
+  saveLocalLeaves(leaves);
+  return true;
 };
 
 const authFetch = async (path, options = {}) => {
@@ -343,6 +755,91 @@ const authFetch = async (path, options = {}) => {
 };
 
 const formatDate = (value) => new Date(value).toLocaleDateString();
+const formatDateTime = (value) => {
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return "--";
+  return parsed.toLocaleString();
+};
+const notificationKindLabel = (kind) => {
+  if (kind === "holiday") return "Holiday";
+  if (kind === "event") return "Event";
+  return "General";
+};
+const notificationKindClass = (kind) => {
+  if (kind === "holiday") return "warning";
+  if (kind === "event") return "success";
+  return "";
+};
+const renderNotificationList = (
+  container,
+  notifications,
+  emptyMessage = "No notifications yet.",
+  options = {}
+) => {
+  const { withReadActions = false } = options;
+  if (!container) return;
+  if (!notifications || !notifications.length) {
+    container.innerHTML = `<p class="muted">${emptyMessage}</p>`;
+    return;
+  }
+  container.innerHTML = notifications
+    .map(
+      (item) => `
+      <div class="list-item notice-item ${item.kind || "general"}">
+        <div>
+          <strong>${item.title}</strong>
+          <p class="muted">${item.message}</p>
+          <div class="notice-meta">
+            <span class="badge ${notificationKindClass(item.kind)}">${notificationKindLabel(item.kind)}</span>
+            <span class="helper">${formatDateTime(item.created_at)}</span>
+            <span class="helper">By ${item.created_by || "Admin"}</span>
+            ${item.read ? '<span class="badge success">Read</span>' : '<span class="badge warning">Unread</span>'}
+          </div>
+          ${
+            withReadActions && !item.read
+              ? `<div class="notice-actions"><button type="button" class="mark-read-btn" data-notification-read-id="${item.id}">Mark as read</button></div>`
+              : ""
+          }
+        </div>
+      </div>
+    `
+    )
+    .join("");
+};
+
+const renderBellNotificationMenu = (container, notifications, emptyMessage = "No notifications yet.") => {
+  if (!container) return;
+  if (!notifications || !notifications.length) {
+    container.innerHTML = `<p class="muted">${emptyMessage}</p>`;
+    return;
+  }
+  const sorted = [...notifications].sort((a, b) => {
+    if (Boolean(a.read) !== Boolean(b.read)) return a.read ? 1 : -1;
+    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+  });
+  container.innerHTML = sorted
+    .map(
+      (item) => `
+      <div class="list-item notice-item ${item.kind || "general"}">
+        <div>
+          <strong>${item.title}</strong>
+          <p class="muted">${item.message}</p>
+          <div class="notice-meta">
+            <span class="badge ${notificationKindClass(item.kind)}">${notificationKindLabel(item.kind)}</span>
+            ${item.read ? '<span class="badge success">Read</span>' : '<span class="badge warning">Unread</span>'}
+          </div>
+          ${
+            !item.read
+              ? `<div class="notice-actions"><button type="button" class="mark-read-btn" data-notification-read-id="${item.id}">Mark as read</button></div>`
+              : ""
+          }
+        </div>
+      </div>
+    `
+    )
+    .join("");
+};
+
 const normalizeYear = (value) => {
   const raw = String(value || "").trim().toLowerCase();
   if (!raw) return "";
@@ -423,29 +920,35 @@ const renderBarChart = (ctx, labels, data, label) => {
   });
 };
 
+const buildDemoStats = () => {
+  const users = getDemoUsers();
+  const subjects = getDemoSubjects();
+  const attendance = [...ensureDemoAttendance(), ...getLocalCheckins()];
+  const present = attendance.filter((item) => item.status === "Present").length;
+  const rate = attendance.length ? Math.round((present / attendance.length) * 100) : 0;
+  const totalStudents = users.filter((user) => user.role === "student").length;
+  const totalTeachers = users.filter((user) => user.role === "teacher").length;
+  return {
+    attendance_rate: rate,
+    low_attendance_count: rate < 75 ? 1 : 0,
+    total_students: totalStudents,
+    total_teachers: totalTeachers,
+    total_subjects: subjects.length,
+  };
+};
+
 const loadStats = async () => {
   if (isOfflineDemo()) {
-    const users = getDemoUsers();
-    const subjects = getDemoSubjects();
-    const attendance = [...ensureDemoAttendance(), ...getLocalCheckins()];
-    const present = attendance.filter((item) => item.status === "Present").length;
-    const rate = attendance.length ? Math.round((present / attendance.length) * 100) : 0;
-    const totalStudents = users.filter((user) => user.role === "student").length;
-    const totalTeachers = users.filter((user) => user.role === "teacher").length;
-    return {
-      attendance_rate: rate,
-      low_attendance_count: rate < 75 ? 1 : 0,
-      total_students: totalStudents,
-      total_teachers: totalTeachers,
-      total_subjects: subjects.length,
-    };
+    return buildDemoStats();
   }
   try {
     const res = await authFetch("/dashboard/stats");
-    if (!res.ok) return null;
-    return res.json();
+    if (!res.ok) return buildDemoStats();
+    const payload = await res.json();
+    const hasValues = Object.values(payload || {}).some((value) => Number(value) > 0);
+    return hasValues ? payload : buildDemoStats();
   } catch (error) {
-    return null;
+    return buildDemoStats();
   }
 };
 
@@ -455,10 +958,11 @@ const loadAttendance = async () => {
   }
   try {
     const res = await authFetch("/attendance/view");
-    if (!res.ok) return [];
-    return res.json();
+    if (!res.ok) return [...getLocalCheckins(), ...ensureDemoAttendance()];
+    const data = await res.json();
+    return Array.isArray(data) && data.length ? data : [...getLocalCheckins(), ...ensureDemoAttendance()];
   } catch (error) {
-    return [];
+    return [...getLocalCheckins(), ...ensureDemoAttendance()];
   }
 };
 
@@ -468,10 +972,11 @@ const loadSubjects = async () => {
   }
   try {
     const res = await authFetch("/subjects");
-    if (!res.ok) return [];
-    return res.json();
+    if (!res.ok) return getDemoSubjects();
+    const data = await res.json();
+    return Array.isArray(data) && data.length ? data : getDemoSubjects();
   } catch (error) {
-    return [];
+    return getDemoSubjects();
   }
 };
 
@@ -489,95 +994,156 @@ const loadClasses = async () => {
   }
   try {
     const res = await authFetch("/classes");
-    if (!res.ok) return [];
-    return res.json();
+    if (!res.ok) return getDemoClasses();
+    const data = await res.json();
+    return Array.isArray(data) && data.length ? data : getDemoClasses();
   } catch (error) {
-    return [];
+    return getDemoClasses();
   }
 };
 
 const loadStudents = async () => {
   if (isOfflineDemo()) {
-    return getDemoUsers()
-      .filter((user) => user.role === "student")
-      .map((student) => ({
-        id: student.user_id,
-        user_id: student.user_id,
-        name: student.name,
-        email: student.email,
-        student_class: student.student_class,
-        year: student.year,
-        prn: student.prn,
-        birth_date: student.birth_date,
-        address: student.address,
-      }));
+    return getDemoStudentsData();
   }
   try {
     const res = await authFetch("/students");
-    if (!res.ok) return [];
-    return res.json();
+    if (!res.ok) return getDemoStudentsData();
+    const data = await res.json();
+    return Array.isArray(data) && data.length ? data : getDemoStudentsData();
   } catch (error) {
-    return [];
+    return getDemoStudentsData();
   }
 };
 
 const loadTeachers = async () => {
   if (isOfflineDemo()) {
-    return getDemoUsers()
-      .filter((user) => user.role === "teacher")
-      .map((teacher) => ({
-        id: teacher.user_id,
-        user_id: teacher.user_id,
-        name: teacher.name,
-        email: teacher.email,
-        subject: teacher.subject,
-        class_name: teacher.class_name || "",
-      }));
+    return getDemoTeachersData();
   }
   try {
     const res = await authFetch("/teachers");
-    if (!res.ok) return [];
-    return res.json();
+    if (!res.ok) return getDemoTeachersData();
+    const data = await res.json();
+    return Array.isArray(data) && data.length ? data : getDemoTeachersData();
   } catch (error) {
-    return [];
+    return getDemoTeachersData();
+  }
+};
+
+const loadNotifications = async () => {
+  if (isOfflineDemo()) {
+    const role = getRole();
+    const allItems = getDemoNotifications();
+    const readIds = new Set(getDemoNotificationReads().map((item) => String(item)));
+    const applyRead = (item) => ({ ...item, read: readIds.has(String(item.id)) });
+    if (role === "student") {
+      return allItems
+        .filter((item) => ["all", "student"].includes(item.audience))
+        .map(applyRead);
+    }
+    if (role === "teacher") {
+      return allItems
+        .filter((item) => ["all", "teacher"].includes(item.audience))
+        .map(applyRead);
+    }
+    return allItems.map(applyRead);
+  }
+  try {
+    const res = await authFetch("/notifications?limit=30");
+    if (!res.ok) return getDemoNotifications().map((item) => ({ ...item }));
+    const data = await res.json();
+    return Array.isArray(data) && data.length ? data : getDemoNotifications().map((item) => ({ ...item }));
+  } catch (error) {
+    return getDemoNotifications().map((item) => ({ ...item }));
+  }
+};
+
+const markNotificationAsRead = async (notificationId) => {
+  if (isOfflineDemo()) {
+    const ids = new Set(getDemoNotificationReads().map((item) => String(item)));
+    ids.add(String(notificationId));
+    saveDemoNotificationReads(Array.from(ids));
+    return { ok: true };
+  }
+  try {
+    const res = await authFetch(`/notifications/${notificationId}/read`, { method: "POST" });
+    if (!res.ok) {
+      return { ok: false, detail: "Unable to mark notification as read" };
+    }
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, detail: "Backend not reachable. Start server on port 8000." };
+  }
+};
+
+const createNotification = async (payload) => {
+  if (isOfflineDemo()) {
+    const allItems = getDemoNotifications();
+    const item = {
+      id: `N-${Date.now()}`,
+      title: payload.title,
+      message: payload.message,
+      kind: payload.kind || "general",
+      audience: payload.audience || "all",
+      created_by: getDemoProfile()?.name || "Admin",
+      created_at: new Date().toISOString(),
+    };
+    allItems.unshift(item);
+    saveDemoNotifications(allItems.slice(0, 100));
+    return { ok: true, data: item };
+  }
+  try {
+    const res = await authFetch("/notifications", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      let detail = "Unable to send notification";
+      try {
+        const data = await res.json();
+        detail = data.detail || detail;
+      } catch (error) {
+        // ignore
+      }
+      return { ok: false, detail };
+    }
+    return { ok: true, data: await res.json() };
+  } catch (error) {
+    return { ok: false, detail: "Backend not reachable. Start server on port 8000." };
   }
 };
 
 const loadStudentProfile = async () => {
+  const fallbackProfile = {
+    name: "Demo Student",
+    email: "student@smjoshi.edu",
+    student_class: "BSc CS - A",
+    year: "Year 2",
+    department: "Computer Science",
+    semester: "Semester 4",
+    phone: "+91 98765 12000",
+    guardian: "Parent - 98765 11999",
+    prn: getStudentId() || "SMJ-24000",
+    birth_date: "2005-08-14",
+    address: "Hostel Block C",
+  };
   if (isOfflineDemo()) {
     const profile = getDemoProfile();
-    if (profile) return profile;
-    return {
-      name: "Demo Student",
-      email: "student@smjoshi.edu",
-      student_class: "CSE-A",
-      year: "3rd",
-      department: "Computer Science",
-      semester: "Semester 6",
-      phone: "+91 98765 12000",
-      guardian: "Parent - 98765 11999",
-      prn: getStudentId() || "SMJ-24000",
-      birth_date: "2005-08-14",
-      address: "Hostel Block C",
-    };
+    return profile || fallbackProfile;
   }
   let res;
   try {
     res = await authFetch("/students/me");
   } catch (error) {
-    return { error: "Unable to load profile" };
+    return getDemoProfile() || fallbackProfile;
   }
   if (!res.ok) {
-    let detail = "Unable to load profile";
-    try {
-      const payload = await res.json();
-      detail = payload.detail || detail;
-    } catch (error) {
-      // ignore
-    }
-    return { error: detail };
+    return getDemoProfile() || fallbackProfile;
   }
-  return res.json();
+  const payload = await res.json();
+  if (!payload || !payload.name) return getDemoProfile() || fallbackProfile;
+  return payload;
 };
 
 const announce = (message, type = "success") => {
@@ -743,9 +1309,73 @@ document.addEventListener("DOMContentLoaded", () => {
   const studentBoard = qs("#student-board");
   if (studentBoard && ensureAuth("student")) {
     bindLogout();
+    const applyStudentNotifications = (notifications = []) => {
+      const studentNoticeList = qs("#student-notifications");
+      renderNotificationList(
+        studentNoticeList,
+        notifications.slice(0, 3),
+        "No admin notifications yet.",
+        { withReadActions: true }
+      );
 
-    Promise.all([loadStats(), loadAttendance(), loadSubjects(), loadStudentProfile()]).then(
-      ([stats, attendance, subjects, profile]) => {
+      const announcementList = qs("#student-announcements");
+      renderNotificationList(announcementList, notifications, "No announcements yet.", {
+        withReadActions: true,
+      });
+
+      const studentUnread = notifications.filter((item) => !item.read).length;
+      const studentUnreadNode = qs("#student-unread-count");
+      if (studentUnreadNode) {
+        studentUnreadNode.textContent = String(studentUnread);
+      }
+      const studentFabUnreadNode = qs("#student-fab-unread-count");
+      if (studentFabUnreadNode) {
+        studentFabUnreadNode.textContent = String(studentUnread);
+      }
+      const studentFabBell = qs("#student-fab-bell");
+      if (studentFabBell) {
+        studentFabBell.classList.toggle("has-unread", studentUnread > 0);
+      }
+
+      renderBellNotificationMenu(
+        qs("#student-bell-menu"),
+        notifications,
+        "No notifications yet."
+      );
+      renderBellNotificationMenu(qs("#student-fab-menu"), notifications, "No notifications yet.");
+
+      const floatingNotice = qs("#student-floating-notice");
+      const floatingClose = qs("#student-floating-close");
+      const floatingTitle = qs("#student-floating-title");
+      const floatingMessage = qs("#student-floating-message");
+      if (floatingNotice && floatingTitle && floatingMessage && notifications.length) {
+        const latest = notifications.find((item) => !item.read) || notifications[0];
+        const seenKey = `sas_seen_notification_${getUserId() || "student"}`;
+        const alreadySeen = localStorage.getItem(seenKey) === String(latest.id);
+        const dismiss = () => {
+          floatingNotice.classList.remove("show");
+          localStorage.setItem(seenKey, String(latest.id));
+        };
+        if (floatingClose) {
+          floatingClose.onclick = dismiss;
+        }
+        if (!alreadySeen) {
+          floatingTitle.textContent = latest.title || "New Notification";
+          floatingMessage.textContent = latest.message || "";
+          floatingNotice.classList.add("show");
+          setTimeout(dismiss, 14000);
+        }
+      }
+    };
+
+    const refreshStudentNotifications = async () => {
+      const notifications = await loadNotifications();
+      applyStudentNotifications(notifications || []);
+      return notifications || [];
+    };
+
+    Promise.all([loadStats(), loadAttendance(), loadSubjects(), loadStudentProfile(), loadNotifications()]).then(
+      ([stats, attendance, subjects, profile, notifications]) => {
       if (!stats) return;
       qs("#attendance-rate").textContent = `${stats.attendance_rate}%`;
       qs("#low-attendance").textContent = stats.low_attendance_count ? "Action Required" : "Great Standing";
@@ -910,29 +1540,81 @@ document.addEventListener("DOMContentLoaded", () => {
           .join("");
       }
 
-      const leaveStatus = qs("#leave-status");
-      if (leaveStatus) {
-        const leaves = getLocalLeaves();
-        leaveStatus.innerHTML = (leaves.length
-          ? leaves
-          : [
-              { reason: "Medical", from: "2026-03-10", to: "2026-03-12", status: "Approved" },
-            ]
-        )
-          .map(
-            (item) => `
-            <div class="list-item">
-              <div>
-                <strong>${item.reason}</strong>
-                <p class="muted">${item.from} to ${item.to}</p>
-              </div>
-              <span class="status-pill ${item.status === "Approved" ? "" : "warning"}">${item.status}</span>
-            </div>
-          `
-          )
-          .join("");
-      }
+      renderStudentLeaveStatus();
+      applyStudentNotifications(notifications || []);
     });
+
+    const studentNoticeRoot = qs("#student-board");
+    if (studentNoticeRoot) {
+      const studentBellBtn = qs("#student-bell-btn");
+      const studentBellMenu = qs("#student-bell-menu");
+      const studentFabBellBtn = qs("#student-fab-bell");
+      const studentFabBellMenu = qs("#student-fab-menu");
+      if (studentBellBtn && studentBellMenu) {
+        studentBellBtn.addEventListener("click", (event) => {
+          event.stopPropagation();
+          studentBellMenu.classList.toggle("show");
+          if (studentFabBellMenu) studentFabBellMenu.classList.remove("show");
+        });
+      }
+      if (studentFabBellBtn && studentFabBellMenu) {
+        studentFabBellBtn.addEventListener("click", (event) => {
+          event.stopPropagation();
+          studentFabBellMenu.classList.toggle("show");
+          if (studentBellMenu) studentBellMenu.classList.remove("show");
+        });
+      }
+      document.addEventListener("click", (event) => {
+        if (
+          studentBellMenu &&
+          studentBellMenu.classList.contains("show") &&
+          !studentBellMenu.contains(event.target) &&
+          !(studentBellBtn && studentBellBtn.contains(event.target))
+        ) {
+          studentBellMenu.classList.remove("show");
+        }
+        if (
+          studentFabBellMenu &&
+          studentFabBellMenu.classList.contains("show") &&
+          !studentFabBellMenu.contains(event.target) &&
+          !(studentFabBellBtn && studentFabBellBtn.contains(event.target))
+        ) {
+          studentFabBellMenu.classList.remove("show");
+        }
+      });
+      const handleStudentMarkRead = async (event) => {
+        const markBtn = event.target.closest("[data-notification-read-id]");
+        if (!markBtn) return;
+        const notificationId = markBtn.dataset.notificationReadId;
+        const result = await markNotificationAsRead(notificationId);
+        if (!result.ok) {
+          announce(result.detail || "Unable to mark as read", "error");
+          return;
+        }
+        announce("Notification marked as read");
+        await refreshStudentNotifications();
+      };
+
+      studentNoticeRoot.addEventListener("click", handleStudentMarkRead);
+      if (studentBellMenu) {
+        studentBellMenu.addEventListener("click", handleStudentMarkRead);
+      }
+      if (studentFabBellMenu) {
+        studentFabBellMenu.addEventListener("click", handleStudentMarkRead);
+      }
+    }
+
+    const studentNotificationTimer = setInterval(async () => {
+      if (document.hidden) return;
+      await refreshStudentNotifications();
+    }, 15000);
+    window.addEventListener(
+      "beforeunload",
+      () => {
+        clearInterval(studentNotificationTimer);
+      },
+      { once: true }
+    );
 
     const selfIdInput = qs("#self-student-id");
     if (selfIdInput) {
@@ -1028,36 +1710,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const profile = getDemoProfile() || {};
         const studentId = getStudentId() || getUserId() || profile.prn || "--";
         const studentName = profile.name || "Student";
+        const studentClass = profile.student_class || "Unknown Class";
         const leaves = getLocalLeaves();
         leaves.unshift({
-          reason: `${reason} (${type})`,
+          leave_id: `L-${Date.now()}`,
+          reason,
+          type,
           from,
           to,
           status: "Pending",
           student_id: studentId,
           student_name: studentName,
+          student_class: studentClass,
           submitted_at: new Date().toISOString(),
         });
         saveLocalLeaves(leaves.slice(0, 8));
         announce("Leave request submitted");
         event.target.reset();
-        const leaveStatus = qs("#leave-status");
-        if (leaveStatus) {
-          leaveStatus.innerHTML = leaves
-            .slice(0, 5)
-            .map(
-              (item) => `
-              <div class="list-item">
-                <div>
-                  <strong>${item.reason}</strong>
-                  <p class="muted">${item.from} to ${item.to}</p>
-                </div>
-                <span class="status-pill warning">${item.status}</span>
-              </div>
-            `
-            )
-            .join("");
-        }
+        renderStudentLeaveStatus();
         renderTeacherLeaveRequests();
       });
     }
@@ -1066,6 +1736,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const teacherBoard = qs("#teacher-board");
   if (teacherBoard && ensureAuth("teacher")) {
     bindLogout();
+    const applyTeacherNotifications = (notifications = []) => {
+      const teacherNoticeList = qs("#teacher-notifications");
+      renderNotificationList(
+        teacherNoticeList,
+        notifications,
+        "No notifications from admin yet.",
+        { withReadActions: true }
+      );
+
+      const teacherUnreadNode = qs("#teacher-unread-count");
+      const teacherUnread = notifications.filter((item) => !item.read).length;
+      if (teacherUnreadNode) {
+        teacherUnreadNode.textContent = String(teacherUnread);
+      }
+      const teacherFabUnreadNode = qs("#teacher-fab-unread-count");
+      if (teacherFabUnreadNode) {
+        teacherFabUnreadNode.textContent = String(teacherUnread);
+      }
+      const teacherFabBell = qs("#teacher-fab-bell");
+      if (teacherFabBell) {
+        teacherFabBell.classList.toggle("has-unread", teacherUnread > 0);
+      }
+      renderBellNotificationMenu(qs("#teacher-bell-menu"), notifications, "No notifications yet.");
+      renderBellNotificationMenu(qs("#teacher-fab-menu"), notifications, "No notifications yet.");
+    };
+
+    const refreshTeacherNotifications = async () => {
+      const notifications = await loadNotifications();
+      applyTeacherNotifications(notifications || []);
+      return notifications || [];
+    };
+
     const teacherProfile = getDemoProfile();
     const teacherGreeting = qs("#teacher-greeting");
     const teacherMeta = qs("#teacher-meta");
@@ -1081,8 +1783,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (dateInput) {
       dateInput.value = today;
     }
-    Promise.all([loadStats(), loadStudents(), loadSubjects(), loadClasses(), loadAttendance(), loadTeachers()]).then(
-      ([stats, students, subjects, classes, attendance, teachers]) => {
+    Promise.all([
+      loadStats(),
+      loadStudents(),
+      loadSubjects(),
+      loadClasses(),
+      loadAttendance(),
+      loadTeachers(),
+      loadNotifications(),
+    ]).then(
+      ([stats, students, subjects, classes, attendance, teachers, notifications]) => {
       if (stats) {
         qs("#teacher-total-students").textContent = stats.total_students;
         qs("#teacher-attendance-rate").textContent = `${stats.attendance_rate}%`;
@@ -1257,7 +1967,100 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       renderTeacherLeaveRequests();
+      applyTeacherNotifications(notifications || []);
     }
+    );
+
+    const teacherNoticeRoot = qs("#teacher-board");
+    if (teacherNoticeRoot) {
+      const teacherBellBtn = qs("#teacher-bell-btn");
+      const teacherBellMenu = qs("#teacher-bell-menu");
+      const teacherFabBellBtn = qs("#teacher-fab-bell");
+      const teacherFabBellMenu = qs("#teacher-fab-menu");
+      if (teacherBellBtn && teacherBellMenu) {
+        teacherBellBtn.addEventListener("click", (event) => {
+          event.stopPropagation();
+          teacherBellMenu.classList.toggle("show");
+          if (teacherFabBellMenu) teacherFabBellMenu.classList.remove("show");
+        });
+      }
+      if (teacherFabBellBtn && teacherFabBellMenu) {
+        teacherFabBellBtn.addEventListener("click", (event) => {
+          event.stopPropagation();
+          teacherFabBellMenu.classList.toggle("show");
+          if (teacherBellMenu) teacherBellMenu.classList.remove("show");
+        });
+      }
+      document.addEventListener("click", (event) => {
+        if (
+          teacherBellMenu &&
+          teacherBellMenu.classList.contains("show") &&
+          !teacherBellMenu.contains(event.target) &&
+          !(teacherBellBtn && teacherBellBtn.contains(event.target))
+        ) {
+          teacherBellMenu.classList.remove("show");
+        }
+        if (
+          teacherFabBellMenu &&
+          teacherFabBellMenu.classList.contains("show") &&
+          !teacherFabBellMenu.contains(event.target) &&
+          !(teacherFabBellBtn && teacherFabBellBtn.contains(event.target))
+        ) {
+          teacherFabBellMenu.classList.remove("show");
+        }
+      });
+      teacherNoticeRoot.addEventListener("click", async (event) => {
+        const approveBtn = event.target.closest(".leave-approve-btn");
+        if (approveBtn) {
+          const leaveId = approveBtn.dataset.leaveId;
+          const updated = updateLeaveRequestStatus(leaveId, "Approved");
+          if (!updated) {
+            announce("Leave request not found", "error");
+            return;
+          }
+          renderTeacherLeaveRequests();
+          renderStudentLeaveStatus();
+          announce("Leave request approved");
+          return;
+        }
+
+        const rejectBtn = event.target.closest(".leave-reject-btn");
+        if (rejectBtn) {
+          const leaveId = rejectBtn.dataset.leaveId;
+          const updated = updateLeaveRequestStatus(leaveId, "Rejected");
+          if (!updated) {
+            announce("Leave request not found", "error");
+            return;
+          }
+          renderTeacherLeaveRequests();
+          renderStudentLeaveStatus();
+          announce("Leave request rejected");
+          return;
+        }
+
+        const markBtn = event.target.closest("[data-notification-read-id]");
+        if (!markBtn) return;
+        const notificationId = markBtn.dataset.notificationReadId;
+        const result = await markNotificationAsRead(notificationId);
+        if (!result.ok) {
+          announce(result.detail || "Unable to mark as read", "error");
+          return;
+        }
+        announce("Notification marked as read");
+        await refreshTeacherNotifications();
+      });
+    }
+
+    const teacherNotificationTimer = setInterval(async () => {
+      if (document.hidden) return;
+      await refreshTeacherNotifications();
+    }, 15000);
+    window.addEventListener(
+      "beforeunload",
+      () => {
+        clearInterval(teacherNotificationTimer);
+      },
+      { once: true }
     );
 
     qs("#attendance-form").addEventListener("submit", async (event) => {
@@ -1388,6 +2191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let adminSubjects = [];
     let adminClasses = [];
     let adminAttendance = [];
+    let adminNotifications = [];
 
     const getManagedUsers = () => [
       ...adminStudents.map((student) => ({
@@ -1602,6 +2406,105 @@ document.addEventListener("DOMContentLoaded", () => {
         .join("");
     };
 
+    const renderAdminNotifications = () => {
+      const container = qs("#admin-notification-list");
+      if (!container) return;
+      renderNotificationList(
+        container,
+        adminNotifications.slice(0, 8),
+        "No notifications broadcast yet."
+      );
+    };
+
+    const renderTeacherClassMap = () => {
+      const table = qs("#admin-teacher-class-map");
+      if (!table) return;
+      if (!adminTeachers.length) {
+        table.innerHTML = '<tr><td colspan="3" class="muted">No teachers found.</td></tr>';
+        return;
+      }
+      const rows = adminTeachers
+        .slice()
+        .sort((a, b) => (a.name || "").localeCompare(b.name || ""))
+        .map(
+          (teacher) => `
+          <tr>
+            <td>${teacher.name || "--"}</td>
+            <td>${teacher.subject || "--"}</td>
+            <td>${teacher.class_name || "--"}</td>
+          </tr>
+        `
+        )
+        .join("");
+      table.innerHTML = rows;
+    };
+
+    const renderPresentStudents = () => {
+      const table = qs("#admin-present-students");
+      const dateNode = qs("#admin-present-date");
+      if (!table || !dateNode) return;
+      if (!adminAttendance.length) {
+        dateNode.textContent = "--";
+        table.innerHTML = '<tr><td colspan="4" class="muted">No attendance records found.</td></tr>';
+        return;
+      }
+
+      const latestTime = Math.max(
+        ...adminAttendance.map((item) => new Date(item.date).getTime()).filter((value) => Number.isFinite(value))
+      );
+      const latestDay = new Date(latestTime);
+      if (!Number.isFinite(latestTime)) {
+        dateNode.textContent = "--";
+        table.innerHTML = '<tr><td colspan="4" class="muted">No valid attendance date found.</td></tr>';
+        return;
+      }
+
+      const y = latestDay.getFullYear();
+      const m = String(latestDay.getMonth() + 1).padStart(2, "0");
+      const d = String(latestDay.getDate()).padStart(2, "0");
+      const latestIsoDate = `${y}-${m}-${d}`;
+      dateNode.textContent = latestIsoDate;
+
+      const studentsById = new Map(adminStudents.map((student) => [String(student.id), student]));
+      const presentRows = adminAttendance
+        .filter((item) => {
+          const itemDate = new Date(item.date);
+          if (!Number.isFinite(itemDate.getTime())) return false;
+          const itemIso = `${itemDate.getFullYear()}-${String(itemDate.getMonth() + 1).padStart(2, "0")}-${String(
+            itemDate.getDate()
+          ).padStart(2, "0")}`;
+          return itemIso === latestIsoDate && String(item.status || "").toLowerCase() === "present";
+        })
+        .map((item) => {
+          const student = studentsById.get(String(item.student_id));
+          return {
+            studentName: item.student_name || student?.name || `Student ${item.student_id}`,
+            studentClass: student?.student_class || item.student_class || "--",
+            subject: item.subject || "--",
+            status: item.status || "Present",
+          };
+        })
+        .sort((a, b) => a.studentName.localeCompare(b.studentName));
+
+      if (!presentRows.length) {
+        table.innerHTML = '<tr><td colspan="4" class="muted">No students marked present on this date.</td></tr>';
+        return;
+      }
+
+      table.innerHTML = presentRows
+        .map(
+          (row) => `
+          <tr>
+            <td>${row.studentName}</td>
+            <td>${row.studentClass}</td>
+            <td>${row.subject}</td>
+            <td><span class="status-pill success">${row.status}</span></td>
+          </tr>
+        `
+        )
+        .join("");
+    };
+
     const resetSubjectForm = () => {
       const subjectForm = qs("#subject-form");
       const subjectEditId = qs("#subject-edit-id");
@@ -1613,19 +2516,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const refreshAdminData = async () => {
       try {
-        const [stats, students, teachers, subjects, classes, attendance] = await Promise.all([
+        const [stats, students, teachers, subjects, classes, attendance, notifications] = await Promise.all([
           loadStats(),
           loadStudents(),
           loadTeachers(),
           loadSubjects(),
           loadClasses(),
           loadAttendance(),
+          loadNotifications(),
         ]);
         adminStudents = students || [];
         adminTeachers = teachers || [];
         adminSubjects = subjects || [];
         adminClasses = classes || [];
         adminAttendance = attendance || [];
+        adminNotifications = notifications || [];
 
         qs("#admin-total-students").textContent = stats?.total_students ?? adminStudents.length;
         qs("#admin-total-teachers").textContent = stats?.total_teachers ?? adminTeachers.length;
@@ -1640,6 +2545,9 @@ document.addEventListener("DOMContentLoaded", () => {
         renderUsers();
         renderSubjects();
         renderClasses();
+        renderAdminNotifications();
+        renderTeacherClassMap();
+        renderPresentStudents();
       } catch (error) {
         announce("Unable to load admin data", "error");
       }
@@ -1648,6 +2556,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const userForm = qs("#user-form");
     const userSubmit = qs("#user-submit");
     const cancelEdit = qs("#cancel-edit");
+    const adminNotificationForm = qs("#admin-notification-form");
     const roleSelect = qs("#new-role");
     const passwordInput = qs("#new-password");
     const newStudentSection = qs("#new-student-section");
@@ -2177,6 +3086,37 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         const data = await res.json();
         announce(`Alerts sent to ${data.recipients.length} students`);
+      });
+    }
+
+    if (adminNotificationForm) {
+      adminNotificationForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (teacherLimitedAccess) {
+          announce("Teacher access does not allow broadcast notifications", "error");
+          return;
+        }
+        const payload = {
+          title: qs("#notice-title")?.value.trim() || "",
+          message: qs("#notice-message")?.value.trim() || "",
+          kind: qs("#notice-kind")?.value || "general",
+          audience: qs("#notice-audience")?.value || "all",
+        };
+        if (!payload.title || !payload.message) {
+          announce("Title and message are required", "error");
+          return;
+        }
+
+        const result = await createNotification(payload);
+        if (!result.ok) {
+          announce(result.detail || "Unable to send notification", "error");
+          return;
+        }
+
+        announce("Notification sent");
+        adminNotificationForm.reset();
+        await refreshAdminData();
+        setActiveTab("overview");
       });
     }
 
